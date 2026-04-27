@@ -1,19 +1,20 @@
 # The Prototype Bet
 
 ## What I Built
-<!-- One sentence: what does this prototype demonstrate? -->
+A clickable AI copilot prototype that helps IoT teams detect, investigate, and resolve SIM/eSIM connectivity incidents before customers are impacted.
 
 ## Tool Used
-<!-- v0 / Cursor / Lovable / other -->
+Lovable
 
 ## Prototype Link
-<!-- Paste the shareable URL -->
+[<!-- Paste the shareable URL -->](https://id-preview--feea9629-32a9-416e-98cf-c19e200b5f69.lovable.app/?__lovable_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoia3RwWk4wOFNIU2ZqbG0xc25FOUQxb0RncE9pMiIsInByb2plY3RfaWQiOiJmZWVhOTYyOS0zMmE5LTQxNmUtOThjZi1jMTllMjAwYjVmNjkiLCJhY2Nlc3NfdHlwZSI6InByb2plY3QiLCJpc3MiOiJsb3ZhYmxlLWFwaSIsInN1YiI6ImZlZWE5NjI5LTMyYTktNDE2ZS05OGNmLWMxOWUyMDBiNWY2OSIsImF1ZCI6WyJsb3ZhYmxlLWFwcCJdLCJleHAiOjE3Nzc5MTk5MDYsIm5iZiI6MTc3NzMxNTEwNiwiaWF0IjoxNzc3MzE1MTA2fQ.TuT8bhANVO83IgBY8xrYx5KbPEbf56rTopy8v9rOjQfBWCbKDETxLXy6_0TpWFGvjva98_QB1u4zhT5vW6LUGsibcutRBh5leOJE-uj4Ump-3NtIHHPSAK7Mwm3jU2YN-5lfTEfzcV0AV6BpRKkpsYRYymIoNGN_0RMh3rTEyY4S0a4pVKXBZpOvJNvUUXm5T-OMJMpT4ueRp-ZuR31sOdSTuclKx07_CsjYSZ0rGIHnTeBcl8NUgjOIo0BIA3o05bNRh8T9LPWAsEpRw8RvQkUgbKDCyu4CXuaEhQDOqjf1xUGYiex0C_iLQrdeQrcK9w_RFdo9s_rlsqZ4itYbm9DPgW4zzzYePvyPj-tuBSNpMKJjJqciWEALGfGiVwpdE5NOI26d9Ik9KFxViNwL2-jo4ncwIjPpLnC8yzTFAf-v08scpDxrGhjKSMrOuvOOJ_78rXMFUO-fE4MFLcB0TQdfi97EZNwlSaMwiUC3NfCYJ26jUwtHsXzQ91quqQlgeyeL9TiuVaCTmjht1VIqMrt1jke_5Wm4_tIauelaPFfIEIumNZor0u3l6pFRWPDaer2AAntFl2QldrV9dqEl5YiC1Gz204IkVjx6m_3oK6z52p4QrAXt-RjY3XcBqcnjj3_1b8VG2AB1atitn2V8kjV-qqhJ5GZx0q6kO5UVrKk)
+
 
 ## AI Value Archetype
-<!-- Automator / Copilot / Oracle / Creator / Orchestrator -->
+Copilot
 
 ## The Bet in One Sentence
-<!-- What you're building, for whom, why now -->
+I’m building an AI connectivity copilot for IoT product and operations teams because global device fleets are growing faster than teams can manually monitor, diagnose, and resolve connectivity issues.
 
 ## Kill Criteria
-<!-- When would you stop? What evidence would kill this bet? -->
+I would stop if users say the prototype does not reduce investigation time, does not provide more actionable recommendations than existing dashboards, or if teams are unwilling to trust AI-suggested fixes without extensive manual review.
