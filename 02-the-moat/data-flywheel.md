@@ -18,7 +18,7 @@ Every team has operational policies baked into how they work — preferred carri
 A failure pattern spotted on a roaming partner in Germany instantly improves detection for every other customer using that same partner — in any country, any industry. This cross-domain transfer happens automatically because emnify owns the core network and all roaming data flows through it. AWS cannot buy this. Cisco cannot replicate it. It gets stronger with every new fleet that joins.
 
 ### Loop 4: Network loop
-**Score: __/5**
+**Score: 2/5**
 *Does each new user/team make the product better for everyone?*
 New customers passively add data volume, which quietly improves baselines — but they don't visibly make the product better for existing users. No benchmarking, no "fleets like yours" comparisons, no shared intelligence surfaced to customers. The network effect is real under the hood but invisible in the product. Making it visible is a product decision, not an infrastructure one.
 
