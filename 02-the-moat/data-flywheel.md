@@ -4,7 +4,7 @@
 
 ### Loop 1: Correction Loop
 **Score: 3/5**
-*When your AI gets something wrong, what happens to that correction?*
+*When your AI gets something wrong, what happens to that correction?*  
 The copilot suggests a fix, say, switch a SIM to a different carrier. The ops engineer overrides it. Right now that override disappears. It should be saved as a labelled training example: what the AI said, what the human did instead, and why. The network-layer context makes these corrections uniquely valuable — no generic model has this data.
 
 ### Loop 2: Preference loop
