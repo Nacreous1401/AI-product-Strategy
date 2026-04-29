@@ -52,7 +52,7 @@ Surface fleet benchmarking in the copilot so new customers visibly benefit exist
 AWS  
 **Attack vector:**  
 Bundles SIM Management into AWS IoT Core. Offers it free to existing enterprise customers. 
-**Time to threat**  
+**Time to threat**    
 18-24 months - Carrier deals take time 
-**Your defense:**  
+**Your defense:**    
 Show what AWS can't see-  SS7, roaming failures, inter-carrier data. Make "good enough" feel risky.
