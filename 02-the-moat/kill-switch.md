@@ -10,7 +10,8 @@
 | **Eval** | No formal testing system exists to compare provider quality. | H |Build 10 real connectivity incident test cases and compare outputs across providers. |
 
 ## Portability Score
-<!-- Ready / Partial / Locked --> **Partial**  
+<!-- Ready / Partial / Locked --> 
+**Partial**  
  
 
 ## If [primary vendor] doubles pricing tomorrow:
