@@ -24,9 +24,9 @@ New customers passively add data volume, which quietly improves baselines — bu
 
 
 **Total Flywheel Score: 13/20**
-**Weakest Loop: Network (2/5)**
-**Fix for weakest loop:**
-surface fleet benchmarking in the copilot so new customers visibly benefit existing ones
+**Weakest Loop: Network (2/5)**  
+**Fix for weakest loop:**  
+Surface fleet benchmarking in the copilot so new customers visibly benefit existing ones
 
 ---
 
