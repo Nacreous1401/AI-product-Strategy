@@ -23,7 +23,7 @@ A failure pattern spotted on a roaming partner in Germany instantly improves det
 New customers passively add data volume, which quietly improves baselines — but they don't visibly make the product better for existing users. No benchmarking, no "fleets like yours" comparisons, no shared intelligence surfaced to customers. The network effect is real under the hood but invisible in the product. Making it visible is a product decision, not an infrastructure one.
 
 
-**Total Flywheel Score: 13/20**
+**Total Flywheel Score: 13/20**  
 **Weakest Loop: Network (2/5)**  
 **Fix for weakest loop:**  
 Surface fleet benchmarking in the copilot so new customers visibly benefit existing ones
