@@ -19,3 +19,7 @@
 ## If [primary vendor] ships a competing product:
 <!-- What's defensible that they can't replicate? -->
 Our advantage is telecom-specific operational data, IoT connectivity workflows, SIM lifecycle expertise, and trusted customer relationships that a general AI provider cannot easily replicate.  
+
+## If [primary vendor] restricts your use case:
+<!-- What breaks? -->
+AI incident diagnosis slows down, automated recommendations stop working, customer support responses become manual, and operations teams must rely on dashboards instead of fast AI-assisted resolution.  
