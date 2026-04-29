@@ -48,6 +48,11 @@ Surface fleet benchmarking in the copilot so new customers visibly benefit exist
 
 *Your partner played the Big Tech attacker. What was their plan to kill you?*
 
-**Attacker:**
-**Attack vector:**
-**Your defense:**
+**Attacker:**  
+AWS  
+**Attack vector:**  
+Bundles SIM Management into AWS IoT Core. Offers it free to existing enterprise customers. 
+**Time to threat**  
+18-24 months - Carrier deals take time 
+**Your defense:**  
+Show what AWS can't see-  SS7, roaming failures, inter-carrier data. Make "good enough" feel risky.
