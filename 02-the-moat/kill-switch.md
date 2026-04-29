@@ -10,10 +10,12 @@
 | **Eval** | No formal testing system exists to compare provider quality. | H |Build 10 real connectivity incident test cases and compare outputs across providers. |
 
 ## Portability Score
-<!-- Ready / Partial / Locked -->
+<!-- Ready / Partial / Locked --> **Partial**  
+ 
 
 ## If [primary vendor] doubles pricing tomorrow:
-<!-- What's your 48-hour response? -->
+<!-- What's your 48-hour response? --> If OpenAI doubles pricing tomorrow, we will reduce unnecessary AI usage, move basic tasks to a backup provider, and renegotiate pricing while testing alternatives   
 
 ## If [primary vendor] ships a competing product:
 <!-- What's defensible that they can't replicate? -->
+Our advantage is telecom-specific operational data, IoT connectivity workflows, SIM lifecycle expertise, and trusted customer relationships that a general AI provider cannot easily replicate.  
