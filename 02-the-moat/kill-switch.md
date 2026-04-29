@@ -3,7 +3,7 @@
 ## Vendor Dependency Assessment
 
 | Dimension | Current State | Risk Level | 48-Hour Action |
-|-----------|--------------|------------|---------------|
+|-----------|--------------|:------------:|---------------|
 | **Provider** |Main AI features depend on OpenAI for recommendations, summaries, and assistant responses | M |Open backup accounts with Anthropic or Google Gemini and test key workflows immediately.|
 | **Abstraction** |AI provider logic is directly connected to parts of the product | H |AMove all AI calls into one shared internal service so providers can be swapped faster.|
 | **Routing** |	Requests currently go to one provider only. | M |Add a simple switch to route traffic to a second provider if needed. |
