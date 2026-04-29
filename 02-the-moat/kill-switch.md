@@ -4,10 +4,10 @@
 
 | Dimension | Current State | Risk Level | 48-Hour Action |
 |-----------|--------------|------------|---------------|
-| **Provider** |OpenAI powers the copilot's recommendations and incident analysis | M |List every OpenAI API call in the codebase. Identify which are portable vs provider-specific. |
-| **Abstraction** |Copilot calls OpenAI directly — no model router or abstraction layer exists | H |Add LiteLLM or equivalent router. One-day task. Lets you swap providers without touching product code. |
-| **Routing** |	All inference goes through one provider — no fallback if OpenAI has an outage or price change | M |Configure Anthropic Claude or Gemini as a secondary fallback. Test it handles a real incident query. |
-| **Eval** | No eval suite — output quality is assessed manually. No way to verify a new model performs as well.| H |Write 10 golden test cases — real SIM incidents with known correct resolutions. Run before any provider switch. |
+| **Provider** |Main AI features depend on OpenAI for recommendations, summaries, and assistant responses | M |Open backup accounts with Anthropic or Google Gemini and test key workflows immediately.|
+| **Abstraction** |AI provider logic is directly connected to parts of the product | H |AMove all AI calls into one shared internal service so providers can be swapped faster.|
+| **Routing** |	Requests currently go to one provider only. | M |Add a simple switch to route traffic to a second provider if needed. |
+| **Eval** | No formal testing system exists to compare provider quality. | H |Build 10 real connectivity incident test cases and compare outputs across providers. |
 
 ## Portability Score
 <!-- Ready / Partial / Locked -->
