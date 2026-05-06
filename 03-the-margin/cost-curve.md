@@ -21,14 +21,14 @@
 ## Cascading Strategy
 <!-- Cheap model → frontier model routing logic -->
 
-**Triage model:**  
-Small low-cost model for simple classification and basic troubleshooting.
+**Triage model:**   
+Small low-cost model for simple classification and basic troubleshooting.  
 **Frontier model:**  
-GPT-4 class model for deep analysis and complex recommendations.
+GPT-4 class model for deep analysis and complex recommendations.  
 **Routing rule:**  
-Simple incidents go to cheaper model first. Escalate only high-risk or unclear cases to frontier model.
+Simple incidents go to cheaper model first. Escalate only high-risk or unclear cases to frontier model.  
 **Expected cascade ratio:**  
-70% cheap model / 30% frontier model
+70% cheap model / 30% frontier model  
 
 ## Pricing Model
 
