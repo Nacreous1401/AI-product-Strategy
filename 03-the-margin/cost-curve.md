@@ -33,11 +33,11 @@ Simple incidents go to cheaper model first. Escalate only high-risk or unclear c
 ## Pricing Model
 
 **Current pricing:**  
-Traditional platform pricing based on SIMs, connectivity usage, and enterprise contracts.
+Traditional platform pricing based on SIMs, connectivity usage, and enterprise contracts.  
 **Proposed AI pricing:**  
-Add AI Copilot premium tier for operations and product teams.
+Add AI Copilot premium tier for operations and product teams.  
 **Model:** seat-based / usage-based / outcome-based / hybrid  
-Hybrid (seat-based + usage-based)
+Hybrid (seat-based + usage-based)  
 
 ## Stress Tests
 
