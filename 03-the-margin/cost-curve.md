@@ -1,5 +1,17 @@
 # Cost Curve & Pricing Strategy
-
+Repo step
+Open 03-the-margin/cost-curve.md → add a Packaging decision block above your cost model.
+Leader
+_____
+Filler
+_____
+Killer
+_____
+Killer usage %
+_____
+Bundle or add-on
+_____
+70% rule: if Killer usage is <70%, it is probably an add-on.
 ## Cost Model
 
 | Cost Category | Per-User/Month | Notes |
