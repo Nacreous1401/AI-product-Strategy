@@ -3,7 +3,7 @@
 ## Cost Model
 
 | Cost Category | Per-User/Month | Notes |
-|--------------|----------------|-------|
+|--------------|:--------------:|:-----:|
 | Inference (primary model) |$18 |Used for complex incident analysis, recommendations, and summaries. |
 | Inference (cascading/triage) |$6 |Smaller model handles basic queries and filtering before escalating. |
 | Infrastructure |$8 |Cloud hosting, APIs, monitoring, and processing pipelines. |
@@ -35,7 +35,7 @@ Hybrid (seat-based + usage-based)
 ## Stress Tests
 
 | Scenario | Impact on Margin | Response |
-|----------|-----------------|----------|
+|----------|:---------------:|:--------:|
 | Inference costs 3x |AI margins drop significantly on heavy users. |Increase routing to cheaper models and limit unnecessary AI calls.|
 | Heaviest segment doubles |Enterprise customers generate high compute costs. |Introduce enterprise AI usage tiers and fair usage limits. |
 | Model provider raises prices 50% |AI feature profitability reduces quickly. |Shift workloads to backup providers and renegotiate contracts. |
