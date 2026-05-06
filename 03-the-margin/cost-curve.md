@@ -50,9 +50,55 @@ Hybrid (seat-based + usage-based)
 ## Board One-Pager
 <!-- Before/After: Old SaaS revenue vs. AI usage revenue for your product -->
 
-**Before (traditional SaaS):**  
-Revenue mainly came from connectivity subscriptions, SIM lifecycle management, and platform access.  
-**After (AI-enabled):**  
-Revenue expands through AI-assisted operations, predictive diagnostics, automated incident resolution, and premium AI workflows.  
-**Net margin shift:**  
-Short-term margins decrease slightly due to inference costs, but long-term expansion revenue and customer stickiness improve significantly.  
+### Before (traditional SaaS):
+
+- **Current pricing:**  
+Enterprise connectivity subscriptions based on SIM volume, connectivity usage, and platform access.
+
+- **Current gross margin:**  
+~75%
+
+- **Value framed as:**  
+Reliable global IoT connectivity management platform.
+
+---
+
+### After (AI-enabled):
+
+- **Proposed pricing:**  
+Hybrid pricing model with a $499/month AI platform fee plus $2 per AI-assisted investigation.
+
+- **AI COGS per user/month:**  
+$36
+
+- **Expected gross margin:**  
+~68%
+
+- **Value framed as:**  
+AI-assisted operational intelligence platform for proactive connectivity management and automated incident investigation.
+
+---
+
+### Net margin shift:
+
+- Margin moves from 75% to 68%.
+
+- Explain why the margin changes:  
+Margins decrease because AI introduces variable inference and processing costs that scale with usage. However, the platform captures more operational value, increases customer dependency, and creates new expansion revenue opportunities beyond basic connectivity management.
+
+---
+
+### Why this is still a good business:
+
+The AI layer increases revenue per customer through premium operational workflows while improving customer retention and stickiness. Customers become more dependent on the platform because the AI copilot is integrated into daily troubleshooting and incident management processes. Even with slightly lower gross margins, higher expansion revenue, stronger differentiation, and improved net revenue retention create a stronger long-term business.
+
+---
+
+### Board-ready narrative:
+
+Our traditional SaaS business generates strong margins through connectivity subscriptions, but growth is tied mainly to SIM and usage expansion. The AI layer allows us to monetize operational workflows directly by helping enterprise teams investigate and resolve connectivity issues faster. While AI introduces variable inference costs, we control margin exposure through cascading models, multi-model routing, and selective use of frontier models only for complex investigations. The primary risk is rising model-provider costs or dependency on a single provider, which we mitigate through provider abstraction and fallback routing strategies. We believe the long-term value comes from becoming the operational intelligence layer customers rely on daily, not just the connectivity layer underneath.
+
+**The bet works if...**  
+customers adopt AI-assisted operational workflows frequently enough that increased expansion revenue, retention, and platform dependency outweigh the additional AI operating costs.
+
+
