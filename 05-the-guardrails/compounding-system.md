@@ -17,8 +17,11 @@
 ---
 
 ## Context Connectivity
-<!-- How does knowledge flow across teams and domains? Where does it silo? -->
+Connectivity knowledge flows from SIM telemetry, roaming partner signals, carrier performance, device behavior, support tickets, customer incidents, and operator corrections into the AI copilot.
+The main silo is that corrections, customer-specific policies, support context, and final incident outcomes may stay inside separate tools or teams. If those signals do not feed back into the golden dataset and recommendation system, the product scales usage but does not fully learn.
 
+**Where knowledge silos:**  
+Operator corrections, support-ticket context, customer-specific policies, incident outcomes, and roaming partner intelligence may remain in separate systems instead of improving the AI copilot.
 
 ---
 
