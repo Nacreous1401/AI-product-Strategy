@@ -8,20 +8,11 @@
 | Cross-Domain Transfer | Connectivity incidents across customers, countries, carriers, roaming partners, SIM behavior, and support tickets | Failure patterns found in one fleet improve diagnosis for similar fleets and regions | Y | active |
 | Network Intelligence | Aggregated SIM/eSIM telemetry, usage drops, latency patterns, roaming failures, and recovery outcomes | Fleet benchmarks, anomaly baselines, and “fleets like yours” intelligence | Y | broken |
 
-**Loops mapped:**  
-3
-
-**Loops that actually compound:**  
-3
-
-**Active / Broken / Missing:**  
-1 / 2 / 0
 
 **Broken loop identified by partner:**  
-Network Intelligence — the underlying data exists, but it is not yet clearly surfaced as customer-visible intelligence.
+
 
 **Fix plan:**  
-Add fleet benchmarking and shared incident intelligence into the copilot. Example: “Fleets using this roaming partner are seeing similar latency spikes” or “Your outage pattern matches a known roaming issue detected in other regions.”
 
 ---
 
