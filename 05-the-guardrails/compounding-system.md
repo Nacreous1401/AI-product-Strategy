@@ -17,10 +17,7 @@
 ---
 
 ## Context Connectivity
-
-
-
-**Where knowledge silos:**  
+<!-- How does knowledge flow across teams and domains? Where does it silo? -->
 
 
 ---
