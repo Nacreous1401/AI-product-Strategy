@@ -29,6 +29,12 @@ The main silo is that corrections, customer-specific policies, support context, 
 **Scope:**  
 AI-assisted detection, diagnosis, prioritization, recommendation, and escalation for SIM/eSIM connectivity incidents, roaming issues, usage drops, latency problems, and customer-impacting network anomalies.
 
+**What this policy covers:**  
+The policy covers AI-generated incident summaries, diagnostic explanations, anomaly detection, confidence scoring, recommended next actions, escalation drafts, and human review workflows for connectivity operations.
+
+**What it excludes:**  
+This policy does not allow the AI to independently execute live network changes, switch roaming partners, disable or modify SIMs/eSIMs, override customer-specific policies, make billing or contract decisions, make legal/compliance decisions, or take any action that directly affects customer connectivity without human approval.
+
 **Autonomy boundaries:**  
 The AI can summarize incidents, identify likely causes, recommend next actions, and draft escalation notes. It cannot automatically change carrier routing, modify customer policies, disable SIMs, or execute high-risk remediation without human approval.
 
@@ -53,9 +59,10 @@ The system can use multiple specialized agents, but all high-risk actions requir
 - **Policy Guardrail Agent** — can check customer policies and roaming restrictions; cannot override policy. Approval owner: product/ops owner.
 - **Human Review Layer** — approves, edits, rejects, or escalates recommendations before any customer-impacting action.
 
-The agents can analyze, summarize, recommend, and draft. They cannot execute live connectivity changes, carrier routing changes, SIM status changes, or customer-impacting remediation without human approval.
+The agents can analyze, summarize, recommend, and draft. They cannot execute live connectivity changes, carrier routing changes, SIM status changes, billing changes, policy overrides, or customer-impacting remediation without human approval.
 
 ---
+
 
 ## Shadow AI Audit
 
