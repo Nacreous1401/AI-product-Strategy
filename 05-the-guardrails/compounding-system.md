@@ -40,9 +40,7 @@ This policy does not allow the AI to independently execute live network changes,
 The AI can summarize incidents, identify likely causes, recommend next actions, and draft escalation notes. It cannot automatically change carrier routing, modify customer policies, disable SIMs, or execute high-risk remediation without human approval.
 
 **Decision boundaries:**  
-- Incident summaries and diagnostic explanations: auto  
-- Recommended next-best actions or escalation drafts: human approval  
-- Carrier routing changes, SIM changes, customer policy exceptions, or billing changes: never auto  
+
 
 **Escalation triggers:**  
 Low confidence score, conflicting telemetry, high-value enterprise customer impact, roaming policy conflict, repeated failed recommendations, suspected hallucination, unsupported diagnosis, missing evidence, or any action that could affect live customer connectivity.
@@ -51,9 +49,7 @@ Low confidence score, conflicting telemetry, high-value enterprise customer impa
 Real-time monitoring for confidence, latency, and safety flags. Weekly golden dataset evaluation, hallucination review, and failed recommendation audit. Monthly review of operator overrides, drift trends, policy conflicts, and model/provider performance.
 
 **Audit ownership:**  
-- Real-time safety and latency monitoring: engineering / operations  
-- Weekly golden dataset review: product + operations  
-- Monthly drift and policy review: product + security / compliance  
+- 
 
 **Regulatory exposure (EU AI Act / other):**  
 EU AI Act, GDPR, telecom operational compliance, customer data protection requirements, and internal security/audit policies apply.
@@ -71,28 +67,23 @@ Human approval for customer-impacting actions, audit logs for AI recommendations
 The system can use multiple specialized agents, but all high-risk actions require human approval.
 
 - **Incident Triage Agent**  
-  Can detect anomalies, summarize incidents, and identify abnormal usage, latency, or disconnect patterns.  
-  Cannot execute remediation or change customer connectivity.  
-  Approval owner: operations team.
+  
 
 - **Network Diagnosis Agent**  
   Can analyze SIM, roaming, carrier, network, and telemetry signals to identify likely root causes.  
-  Cannot change routing, switch carriers, or modify SIM status.  
-  Approval owner: network specialist.
+  
 
 - **Recommendation Agent**  
   Can suggest next-best actions, escalation paths, and customer communication drafts.  
-  Cannot trigger live operational changes or customer-impacting actions.  
-  Approval owner: operations lead.
+  
 
 - **Policy Guardrail Agent**  
   Can check customer-specific policies, roaming restrictions, automation boundaries, and compliance rules.  
-  Cannot override customer policy or approve exceptions alone.  
-  Approval owner: product / operations owner.
+ 
 
 - **Human Review Layer**  
   Can approve, edit, reject, or escalate AI recommendations before any customer-impacting action.  
-  Owns final decision-making for live connectivity changes.
+
 
 The agents can analyze, summarize, recommend, and draft. They cannot execute live connectivity changes, carrier routing changes, SIM status changes, billing changes, policy overrides, or customer-impacting remediation without human approval.
 
