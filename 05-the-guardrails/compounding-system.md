@@ -4,91 +4,116 @@
 
 | Loop | Input | Output | Compounds? | Status |
 |------|-------|--------|-----------|--------|
-| Recursive Learning | Human corrections, rejected AI recommendations, operator overrides, and final incident outcomes | Updated golden dataset rows, better evaluation rules, and improved future recommendations | Y | broken |
-| Cross-Domain Transfer | Connectivity incidents across customers, countries, carriers, roaming partners, SIM behavior, and support tickets | Failure patterns found in one fleet improve diagnosis for similar fleets and regions | Y | active |
-| Network Intelligence | Aggregated SIM/eSIM telemetry, usage drops, latency patterns, roaming failures, and recovery outcomes | Fleet benchmarks, anomaly baselines, and “fleets like yours” intelligence | Y | broken |
+| Recursive Learning | Operator corrections, rejected AI suggestions, final incident outcomes | Better golden dataset rows and improved future recommendations | Y | broken |
+| Cross-Domain Transfer | Incidents across customers, countries, carriers, roaming partners, and SIM behavior | Patterns from one fleet help diagnose similar issues in other fleets | Y | active |
+| Network Intelligence | Aggregated SIM/eSIM telemetry, latency patterns, roaming failures, and recovery outcomes | Benchmarks, anomaly baselines, and “fleets like yours” insights | Y | broken |
 
+**Loops mapped:**  
+3
+
+**Loops that actually compound:**  
+3
+
+**Active / Broken / Missing:**  
+1 / 2 / 0
 
 **Broken loop identified by partner:**  
-
+Network Intelligence — the copilot can see useful telecom patterns, but those insights are not yet clearly shown back to customers as benchmarking or shared incident intelligence.
 
 **Fix plan:**  
+Add anonymized fleet benchmarking and shared incident insights into the copilot. For example: “Fleets using this roaming partner are seeing similar latency spikes” or “Your issue matches a known pattern seen across similar fleets.” Keep all insights aggregated and anonymized.
 
 ---
 
 ## Context Connectivity
-Connectivity knowledge flows from SIM telemetry, roaming partner signals, carrier performance, device behavior, support tickets, customer incidents, and operator corrections into the AI copilot.
-The main silo is that corrections, customer-specific policies, support context, and final incident outcomes may stay inside separate tools or teams. If those signals do not feed back into the golden dataset and recommendation system, the product scales usage but does not fully learn.
+
+Connectivity knowledge should flow from SIM telemetry, roaming partner signals, carrier performance, support tickets, customer incidents, and operator corrections into the AI copilot.
+
+Today, the main risk is that useful knowledge stays in silos. Corrections may remain in tickets, Slack, or an operator’s head instead of improving the golden dataset and future recommendations.
 
 **Where knowledge silos:**  
-Operator corrections, support-ticket context, customer-specific policies, incident outcomes, and roaming partner intelligence may remain in separate systems instead of improving the AI copilot.
+Support tickets, customer policies, operator corrections, final incident outcomes, and roaming partner intelligence may sit in separate tools.
 
 ---
 
 ## Governance Policy
 
 **Scope:**  
-AI-assisted detection, diagnosis, prioritization, recommendation, and escalation for SIM/eSIM connectivity incidents, roaming issues, usage drops, latency problems, and customer-impacting network anomalies.
+AI-assisted detection, diagnosis, prioritization, recommendation, and escalation for SIM/eSIM connectivity incidents.
 
 **What this policy covers:**  
-The policy covers AI-generated incident summaries, diagnostic explanations, anomaly detection, confidence scoring, recommended next actions, escalation drafts, and human review workflows for connectivity operations.
+Incident summaries, diagnostic explanations, anomaly detection, confidence scoring, recommended next actions, escalation drafts, and human review workflows.
 
 **What it excludes:**  
-This policy does not allow the AI to independently execute live network changes, switch roaming partners, disable or modify SIMs/eSIMs, override customer-specific policies, make billing or contract decisions, make legal/compliance decisions, or take any action that directly affects customer connectivity without human approval.
+The AI cannot independently switch carriers, change routing, disable or modify SIMs/eSIMs, override customer policies, make billing or contract decisions, make legal/compliance decisions, or take any live customer-impacting action without human approval.
 
 **Autonomy boundaries:**  
-The AI can summarize incidents, identify likely causes, recommend next actions, and draft escalation notes. It cannot automatically change carrier routing, modify customer policies, disable SIMs, or execute high-risk remediation without human approval.
+The AI can analyze, summarize, recommend, and draft.  
+The AI cannot execute live connectivity changes without approval.
 
 **Decision boundaries:**  
-
+- Incident summaries and diagnostics: auto  
+- Recommended actions and escalation drafts: human approval  
+- Carrier changes, SIM changes, policy exceptions, billing decisions: never auto  
 
 **Escalation triggers:**  
-Low confidence score, conflicting telemetry, high-value enterprise customer impact, roaming policy conflict, repeated failed recommendations, suspected hallucination, unsupported diagnosis, missing evidence, or any action that could affect live customer connectivity.
+- Confidence below 70%  
+- Conflicting telemetry  
+- High-value customer impact  
+- Roaming or policy conflict  
+- Missing evidence  
+- Suspected hallucination  
+- Any action affecting live customer connectivity  
 
 **Audit cadence:**  
-Real-time monitoring for confidence, latency, and safety flags. Weekly golden dataset evaluation, hallucination review, and failed recommendation audit. Monthly review of operator overrides, drift trends, policy conflicts, and model/provider performance.
+Real-time monitoring for confidence, latency, and safety flags.  
+Weekly review of golden dataset results, hallucinations, and failed recommendations.  
+Monthly review of drift, overrides, policy conflicts, and model performance.
 
 **Audit ownership:**  
-- 
+- Real-time safety: engineering / operations  
+- Weekly eval review: product + operations  
+- Monthly governance review: product + security / compliance  
 
-**Regulatory exposure (EU AI Act / other):**  
-EU AI Act, GDPR, telecom operational compliance, customer data protection requirements, and internal security/audit policies apply.
+**Regulatory exposure:**  
+EU AI Act, GDPR, telecom operational compliance, customer data protection, and internal security policies.
 
 **Risk tier:**  
 Limited
 
 **Controls in place:**  
-Human approval for customer-impacting actions, audit logs for AI recommendations, confidence thresholds, data minimization in prompts, no training on customer-sensitive data without approval, golden dataset testing, and escalation paths for low-confidence or high-risk cases.
+Human approval for customer-impacting actions, audit logs, confidence thresholds, data minimization, no training on sensitive customer data without approval, golden dataset testing, and escalation paths for risky cases.
 
 ---
 
 ## Agent Topology
 
-The system can use multiple specialized agents, but all high-risk actions require human approval.
+The system may use multiple agents, but customer-impacting actions require human approval.
 
 - **Incident Triage Agent**  
-  
+  Detects anomalies and summarizes incidents.  
+  Cannot execute remediation.  
+  Approval owner: operations team.
 
 - **Network Diagnosis Agent**  
-  Can analyze SIM, roaming, carrier, network, and telemetry signals to identify likely root causes.  
-  
+  Analyzes SIM, carrier, roaming, and telemetry signals.  
+  Cannot change routing or SIM status.  
+  Approval owner: network specialist.
 
 - **Recommendation Agent**  
-  Can suggest next-best actions, escalation paths, and customer communication drafts.  
-  
+  Suggests next-best actions and drafts escalation notes.  
+  Cannot trigger live changes.  
+  Approval owner: operations lead.
 
 - **Policy Guardrail Agent**  
-  Can check customer-specific policies, roaming restrictions, automation boundaries, and compliance rules.  
- 
+  Checks customer policies, roaming limits, and automation boundaries.  
+  Cannot override policy.  
+  Approval owner: product / operations owner.
 
 - **Human Review Layer**  
-  Can approve, edit, reject, or escalate AI recommendations before any customer-impacting action.  
-
-
-The agents can analyze, summarize, recommend, and draft. They cannot execute live connectivity changes, carrier routing changes, SIM status changes, billing changes, policy overrides, or customer-impacting remediation without human approval.
+  Approves, edits, rejects, or escalates AI recommendations before any customer-impacting action.
 
 ---
-
 
 ## Shadow AI Audit
 
@@ -105,18 +130,20 @@ The agents can analyze, summarize, recommend, and draft. They cannot execute liv
 2
 
 **Estimated hidden spend:**  
-Medium — mainly productivity-tool usage and manual analysis, but risk is high if unapproved tools influence customer-impacting connectivity decisions.
+Medium — mostly productivity-tool usage and manual analysis. Risk becomes high if unapproved tools influence live connectivity decisions.
 
 ---
 
-### Shadow AI Audit
+## Shadow AI Action Plan
 
-| Tool | Owner | Risk Level | Decision |
-|------|-------|-----------|----------|
-| | | H / M / L | keep / govern / kill |
-| | | H / M / L | keep / govern / kill |
-| | | H / M / L | keep / govern / kill |
+**Consolidate:**  
+Use the approved AI Connectivity Copilot for incident summaries, diagnostics, and escalation drafts instead of separate ad-hoc tools.
 
-**Total tools found:**
-**Tools after triage:**
-**Estimated hidden spend:**
+**Approve:**  
+Allow ChatGPT/Claude only for low-risk drafting and summarization, with no sensitive customer data and no live operational decisions.
+
+**Block:**  
+Remove unapproved scripts or prompts that recommend carrier switching, SIM changes, routing changes, or other customer-impacting actions.
+
+**Policy draft:**  
+Maintain an approved AI tool catalog. Allow low-risk AI usage with clear data rules. Govern spreadsheet-based analysis. Block any unapproved AI tool that can affect connectivity, routing, SIM status, billing, customer policy, or customer remediation.
