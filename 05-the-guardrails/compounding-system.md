@@ -8,6 +8,15 @@
 | Cross-Domain Transfer | Connectivity incidents across customers, countries, carriers, roaming partners, SIM behavior, and support tickets | Failure patterns found in one fleet improve diagnosis for similar fleets and regions | Y | active |
 | Network Intelligence | Aggregated SIM/eSIM telemetry, usage drops, latency patterns, roaming failures, and recovery outcomes | Fleet benchmarks, anomaly baselines, and “fleets like yours” intelligence | Y | broken |
 
+**Loops mapped:**  
+3
+
+**Loops that actually compound:**  
+3
+
+**Active / Broken / Missing:**  
+1 / 2 / 0
+
 **Broken loop identified by partner:**  
 Network Intelligence — the underlying data exists, but it is not yet clearly surfaced as customer-visible intelligence.
 
@@ -21,6 +30,9 @@ Add fleet benchmarking and shared incident intelligence into the copilot. Exampl
 Connectivity knowledge flows from SIM telemetry, roaming partner signals, carrier performance, device behavior, support tickets, customer incidents, and operator corrections into the AI copilot.
 
 The main silo is that corrections, customer-specific policies, support context, and final incident outcomes may stay inside separate tools or teams. If those signals do not feed back into the golden dataset and recommendation system, the product scales usage but does not fully learn.
+
+**Where knowledge silos:**  
+Operator corrections, support-ticket context, customer-specific policies, incident outcomes, and roaming partner intelligence may remain in separate systems instead of improving the AI copilot.
 
 ---
 
@@ -38,14 +50,30 @@ This policy does not allow the AI to independently execute live network changes,
 **Autonomy boundaries:**  
 The AI can summarize incidents, identify likely causes, recommend next actions, and draft escalation notes. It cannot automatically change carrier routing, modify customer policies, disable SIMs, or execute high-risk remediation without human approval.
 
+**Decision boundaries:**  
+- Incident summaries and diagnostic explanations: auto  
+- Recommended next-best actions or escalation drafts: human approval  
+- Carrier routing changes, SIM changes, customer policy exceptions, or billing changes: never auto  
+
 **Escalation triggers:**  
 Low confidence score, conflicting telemetry, high-value enterprise customer impact, roaming policy conflict, repeated failed recommendations, suspected hallucination, unsupported diagnosis, missing evidence, or any action that could affect live customer connectivity.
 
 **Audit cadence:**  
 Real-time monitoring for confidence, latency, and safety flags. Weekly golden dataset evaluation, hallucination review, and failed recommendation audit. Monthly review of operator overrides, drift trends, policy conflicts, and model/provider performance.
 
+**Audit ownership:**  
+- Real-time safety and latency monitoring: engineering / operations  
+- Weekly golden dataset review: product + operations  
+- Monthly drift and policy review: product + security / compliance  
+
 **Regulatory exposure (EU AI Act / other):**  
-EU AI Act, GDPR, telecom operational compliance, customer data protection requirements, and internal security/audit policies apply. Risk tier: limited. Controls include human approval for customer-impacting actions, audit logs for AI recommendations, confidence thresholds, data minimization in prompts, no training on customer-sensitive data without approval, golden dataset testing, and escalation paths for low-confidence or high-risk cases.
+EU AI Act, GDPR, telecom operational compliance, customer data protection requirements, and internal security/audit policies apply.
+
+**Risk tier:**  
+Limited
+
+**Controls in place:**  
+Human approval for customer-impacting actions, audit logs for AI recommendations, confidence thresholds, data minimization in prompts, no training on customer-sensitive data without approval, golden dataset testing, and escalation paths for low-confidence or high-risk cases.
 
 ---
 
@@ -53,11 +81,29 @@ EU AI Act, GDPR, telecom operational compliance, customer data protection requir
 
 The system can use multiple specialized agents, but all high-risk actions require human approval.
 
-- **Incident Triage Agent** — can detect anomalies and summarize incidents; cannot execute remediation. Approval owner: operations team.
-- **Network Diagnosis Agent** — can analyze SIM, roaming, carrier, and telemetry signals; cannot change routing. Approval owner: network specialist.
-- **Recommendation Agent** — can suggest next-best actions and draft escalation notes; cannot trigger live changes. Approval owner: operations lead.
-- **Policy Guardrail Agent** — can check customer policies and roaming restrictions; cannot override policy. Approval owner: product/ops owner.
-- **Human Review Layer** — approves, edits, rejects, or escalates recommendations before any customer-impacting action.
+- **Incident Triage Agent**  
+  Can detect anomalies, summarize incidents, and identify abnormal usage, latency, or disconnect patterns.  
+  Cannot execute remediation or change customer connectivity.  
+  Approval owner: operations team.
+
+- **Network Diagnosis Agent**  
+  Can analyze SIM, roaming, carrier, network, and telemetry signals to identify likely root causes.  
+  Cannot change routing, switch carriers, or modify SIM status.  
+  Approval owner: network specialist.
+
+- **Recommendation Agent**  
+  Can suggest next-best actions, escalation paths, and customer communication drafts.  
+  Cannot trigger live operational changes or customer-impacting actions.  
+  Approval owner: operations lead.
+
+- **Policy Guardrail Agent**  
+  Can check customer-specific policies, roaming restrictions, automation boundaries, and compliance rules.  
+  Cannot override customer policy or approve exceptions alone.  
+  Approval owner: product / operations owner.
+
+- **Human Review Layer**  
+  Can approve, edit, reject, or escalate AI recommendations before any customer-impacting action.  
+  Owns final decision-making for live connectivity changes.
 
 The agents can analyze, summarize, recommend, and draft. They cannot execute live connectivity changes, carrier routing changes, SIM status changes, billing changes, policy overrides, or customer-impacting remediation without human approval.
 
