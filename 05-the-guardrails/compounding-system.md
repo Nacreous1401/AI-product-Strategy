@@ -76,16 +76,14 @@ Medium — mainly productivity-tool usage and manual analysis, but risk is high 
 
 ---
 
-## Shadow AI Action Plan
+### Shadow AI Audit
 
-**Consolidate:**  
-Use the approved AI Connectivity Copilot for incident summaries, diagnostic support, and escalation drafts instead of separate ChatGPT/Claude usage or spreadsheet-based analysis.
+| Tool | Owner | Risk Level | Decision |
+|------|-------|-----------|----------|
+| | | H / M / L | keep / govern / kill |
+| | | H / M / L | keep / govern / kill |
+| | | H / M / L | keep / govern / kill |
 
-**Approve:**  
-ChatGPT/Claude may be governed for low-risk drafting and summarization only, with no customer-sensitive data, no live operational decisions, and clear data-handling rules. Spreadsheet-based AI analysis can stay if monitored and connected to approved data sources.
-
-**Block:**  
-Unapproved scripts or prompts that recommend carrier switching, SIM changes, routing changes, or customer-impacting actions without human approval must be removed immediately.
-
-**Policy draft:**  
-Maintain an approved AI tool catalog, allow low-risk summarization use with data restrictions, govern spreadsheet-based analysis, and block any unapproved AI tool that can influence live connectivity, routing, SIM status, or customer-impacting remediation.
+**Total tools found:**
+**Tools after triage:**
+**Estimated hidden spend:**
