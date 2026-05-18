@@ -72,8 +72,15 @@ We should fund an AI copilot that helps connectivity operations teams diagnose i
 We are asking for 1.5 million in funding, 5 engineers, 1 PM, and 12 months to prove the copilot can reduce investigation time, create a premium AI tier, and establish the first version of our shared incident intelligence moat. In return, we will deliver the diagnostic copilot, confidence UX, human review workflow, golden dataset evaluation, cost monitoring, model routing, and the first fleet benchmarking experiments. The tradeoff is that other non-core dashboard improvements and lower-leverage customer communication automation should wait until the diagnostic workflow proves measurable value.
 
 ## M1 Baseline vs. Now
+
 *Your 3-sentence AI strategy from Module 1 vs. what you'd say now:*
 
-**M1 baseline:**
+**M1 baseline:**  
+We are building an AI copilot for connectivity operations teams to help them investigate SIM/eSIM connectivity incidents faster.  
+The copilot summarizes incidents, recommends likely root causes, and shows confidence so users do not need to manually search across logs, tickets, and telemetry.  
+We would stop if users say it does not reduce investigation time, does not give more actionable recommendations than existing dashboards, or cannot be trusted without heavy manual review.
 
-**Now:**
+**Now:**  
+We should fund an AI copilot that helps connectivity operations teams diagnose incidents faster because our differentiation must move from basic connectivity management to trusted network intelligence.  
+The near-term win is faster, evidence-backed incident diagnosis; the longer-term moat is anonymized fleet benchmarking and shared incident intelligence.  
+This bet should continue only if we can prove measurable investigation-time reduction, user trust, controlled AI costs, and a clear premium-tier path.
