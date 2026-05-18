@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5 — The Guardrails · Companion Notes</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Lato', -apple-system, sans-serif;
+  background: #07162C;
+  color: #b0b4c8;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ═══ READING PROGRESS BAR ═══ */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 100;
+  background: linear-gradient(90deg, #1241B0, #bc8cff);
+  width: 0%; transition: width 0.1s ease;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 60vh;
+  padding: 120px 32px 80px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; position: relative;
+  background: radial-gradient(ellipse at 30% 30%, rgba(188,140,255,0.20) 0%, #07162C 60%);
+  border-bottom: 1px solid rgba(188,140,255,0.10);
+}
+.hero .module-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #d2a8ff;
+  padding: 8px 18px; border-radius: 6px;
+  background: rgba(188,140,255,0.10);
+  border: 1px solid rgba(188,140,255,0.20);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(40px, 6vw, 68px); font-weight: 900;
+  color: #fff; line-height: 1.05;
+  max-width: 880px; margin-bottom: 20px;
+}
+.hero h1 span { color: #d2a8ff; }
+.hero .lede {
+  font-family: 'Lato', sans-serif;
+  font-size: 19px; line-height: 1.65; max-width: 720px;
+  color: #8899bb; font-style: italic;
+}
+.hero .meta {
+  display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+  margin-top: 40px; font-size: 13px;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #60a5fa; opacity: 0.8;
+}
+.hero .meta span::before { content: '·'; margin-right: 8px; color: #333; }
+.hero .meta span:first-child::before { content: ''; margin-right: 0; }
+
+/* ═══ MAIN CONTAINER ═══ */
+.container {
+  max-width: 760px; margin: 0 auto;
+  padding: 80px 32px 120px;
+}
+
+/* ═══ SECTIONS ═══ */
+section.chapter {
+  margin-bottom: 72px;
+  scroll-margin-top: 40px;
+}
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #60a5fa;
+  margin-bottom: 14px;
+}
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 34px; font-weight: 800;
+  color: #fff; line-height: 1.15;
+  margin-bottom: 28px;
+}
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px; font-weight: 700;
+  color: #e0e0f0; line-height: 1.3;
+  margin-top: 48px; margin-bottom: 14px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+h3:first-of-type {
+  margin-top: 8px;
+  border-top: none;
+  padding-top: 0;
+}
+h3 .slide-num {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #d2a8ff;
+  background: rgba(188,140,255,0.10);
+  padding: 4px 10px; border-radius: 4px;
+  margin-right: 12px; vertical-align: middle;
+}
+p {
+  font-size: 17px; line-height: 1.75;
+  color: #b0b4c8; margin-bottom: 18px;
+}
+strong { color: #fff; font-weight: 700; }
+em { color: #d2a8ff; font-style: italic; font-weight: 600; }
+a {
+  color: #60a5fa; text-decoration: none;
+  border-bottom: 1px dashed rgba(96,165,250,0.4);
+  transition: all 0.2s;
+}
+a:hover { color: #93c5fd; border-bottom-style: solid; }
+
+code {
+  font-family: 'IBM Plex Mono', monospace;
+  background: rgba(188,140,255,0.10);
+  color: #d2a8ff;
+  padding: 2px 8px; border-radius: 4px;
+  font-size: 14px; font-weight: 500;
+}
+
+ul, ol {
+  margin: 0 0 18px 24px;
+  font-size: 17px; line-height: 1.75;
+  color: #b0b4c8;
+}
+ul li, ol li { margin-bottom: 8px; }
+ul li::marker { color: #d2a8ff; }
+ol li::marker { color: #d2a8ff; font-weight: 700; }
+
+/* ═══ SECTION DIVIDER ═══ */
+.divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, #bc8cff, transparent);
+  margin: 0 auto 80px;
+  border: none;
+}
+
+/* ═══ PULL QUOTE ═══ */
+.pull-quote {
+  margin: 32px 0;
+  padding: 32px 36px;
+  background: rgba(188,140,255,0.06);
+  border-left: 3px solid #bc8cff;
+  border-radius: 0 12px 12px 0;
+  position: relative;
+}
+.pull-quote::before {
+  content: '"';
+  position: absolute; top: 8px; left: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 64px; font-weight: 900;
+  color: rgba(188,140,255,0.20);
+  line-height: 1;
+}
+.pull-quote p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px; line-height: 1.4;
+  color: #fff; font-weight: 600;
+  margin: 0; padding-left: 32px;
+}
+
+/* ═══ COMPARISON CARDS ═══ */
+.compare {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin: 28px 0;
+}
+.compare-card {
+  border-radius: 12px; padding: 24px;
+  transition: transform 0.2s ease;
+}
+.compare-card:hover { transform: translateY(-2px); }
+.compare-card .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.10em;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.compare-card .big-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px; font-weight: 800;
+  margin-bottom: 8px; line-height: 1.2;
+}
+.compare-card .desc {
+  font-size: 14px; line-height: 1.5; color: #8899bb;
+}
+.compare-card.bad {
+  background: rgba(248,113,113,0.05);
+  border: 1px solid rgba(248,113,113,0.18);
+}
+.compare-card.bad .label, .compare-card.bad .big-num { color: #f87171; }
+.compare-card.good {
+  background: rgba(52,211,153,0.06);
+  border: 1px solid rgba(52,211,153,0.20);
+}
+.compare-card.good .label, .compare-card.good .big-num { color: #34d399; }
+
+/* ═══ NOTICING TABLE ═══ */
+.notice-table {
+  width: 100%; border-collapse: collapse;
+  margin: 24px 0;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; overflow: hidden;
+}
+.notice-table th {
+  text-align: left; padding: 16px 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: #d2a8ff;
+  background: rgba(188,140,255,0.06);
+  border-bottom: 1px solid rgba(188,140,255,0.15);
+}
+.notice-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 14px; line-height: 1.55;
+  color: #b0b4c8; vertical-align: top;
+}
+.notice-table tr:last-child td { border-bottom: none; }
+.notice-table td:first-child {
+  font-weight: 700; color: #fff;
+  white-space: nowrap;
+}
+.notice-table tr:hover td { background: rgba(188,140,255,0.03); }
+
+/* ═══ BRING LIST ═══ */
+.bring-list {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+  margin: 20px 0;
+}
+.bring-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 15px; line-height: 1.55;
+  color: #b0b4c8;
+}
+.bring-list li::before {
+  content: '→'; color: #d2a8ff;
+  font-weight: 700; flex-shrink: 0;
+  font-size: 16px; padding-top: 1px;
+}
+
+/* ═══ REPO TREE (code block) ═══ */
+.repo-tree {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin: 24px 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #b0b4c8;
+  white-space: pre-wrap;
+}
+.repo-tree .folder { color: #d2a8ff; font-weight: 600; }
+.repo-tree .file { color: #6ee7b7; }
+.repo-tree .new { color: #fff; font-weight: 700; }
+.repo-tree .comment { color: #6b7589; }
+
+/* ═══ TAKEAWAY CARDS ═══ */
+.takeaways {
+  display: flex; flex-direction: column; gap: 16px;
+  margin: 28px 0;
+}
+.takeaway {
+  background: rgba(188,140,255,0.05);
+  border: 1px solid rgba(188,140,255,0.18);
+  border-radius: 12px;
+  padding: 22px 26px;
+}
+.takeaway .takeaway-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #d2a8ff; margin-bottom: 10px;
+}
+.takeaway .takeaway-head {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px; font-weight: 700;
+  color: #fff; line-height: 1.4;
+  margin-bottom: 8px;
+}
+.takeaway p {
+  font-size: 15px; line-height: 1.65;
+  color: #a0a8b4; margin-bottom: 0;
+}
+
+/* ═══ THREE-ACT TIMELINE (Samsung) ═══ */
+.acts {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px; margin: 28px 0;
+}
+.act {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 20px;
+}
+.act .act-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fbbf24; margin-bottom: 10px;
+}
+.act .act-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: #fff; margin-bottom: 8px;
+}
+.act .act-desc {
+  font-size: 13px; line-height: 1.55; color: #8899bb;
+}
+
+/* ═══ FOOTER ═══ */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 60px 32px;
+  text-align: center;
+  background: #050f1f;
+}
+footer .footer-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4a5670; margin-bottom: 12px;
+}
+footer .footer-msg {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px; font-weight: 700;
+  color: #fff; margin-bottom: 8px;
+}
+footer .footer-sub {
+  font-size: 14px; color: #6b7589;
+  font-style: italic;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 720px) {
+  .hero { padding: 80px 24px 60px; }
+  .container { padding: 60px 24px 80px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 18px; }
+  .compare { grid-template-columns: 1fr; }
+  .acts { grid-template-columns: 1fr; }
+  .pull-quote p { font-size: 18px; }
+  .repo-tree { font-size: 12px; padding: 16px 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="hero">
+  <div class="module-tag">Module 5 · Companion Notes · ~25 min</div>
+  <h1>The <span>Guardrails</span></h1>
+  <p class="lede">Shareable companion notes. These walk you back through what each slide covered, in case you want to review the arguments, examples, and frameworks at your own pace.</p>
+  <div class="meta">
+    <span>AI Product Strategy</span>
+    <span>Post-Session Reading</span>
+    <span>Bring it back to your repo</span>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="chapter">
+  <div class="section-label">00 · What this module is about</div>
+  <h2>From <em>do they trust it?</em> to <em>what happens when this scales?</em></h2>
+  <p>Module 4 was about <em>product-level</em> trust — golden datasets, confidence UX, reliability contracts, the promises one product makes to its users. Module 5 zooms out. We ask a harder pair of questions: <strong>does this product get smarter the more it's used, and what already broke that nobody told you about?</strong></p>
+  <p>The shift is from <em>craft</em> to <em>exposure</em>. M4 was: can you build something trustworthy? M5 is: what's already happening that you don't know about? Agents picking actions on their own. Employees pasting confidential data into tools nobody approved. Feedback loops that exist on paper and trash every signal in practice. Most experienced PMs are surprised by how much of this is already running inside their own org.</p>
+  <p>The assumption to break early: <strong>"Compliance is a one-time checklist."</strong> In AI, systems either compound or degrade silently. There's no steady state. Traditional products don't get worse when you're not looking. AI products do.</p>
+  <p>You leave with one artifact, <code>05-the-guardrails/compounding-system.md</code>, holding three blocks of work: a <strong>Compounding Sketch</strong> (Feedback Loops + Context Connectivity sections — three loops that either learn, scale, or fail), a <strong>Governance One-Pager</strong> (Governance Policy + Agent Topology sections — autonomy boundaries, escalation triggers, audit cadence, regulatory exposure), and a <strong>Shadow AI Audit Starter</strong> (the Shadow AI Audit section — tools already in your org, risk-scored, triaged). Backed by three interactive tools — the <strong>Compounding System Designer</strong>, the <strong>Governance Policy Drafter</strong>, and the <strong>Shadow AI Audit</strong> — that do the structural lift.</p>
+</section>
+
+<hr class="divider">
+
+<section class="chapter">
+  <div class="section-label">01 · Opening</div>
+  <h2>Where we are, what you brought.</h2>
+
+  <h3><span class="slide-num">Slide 1</span>The Guardrails</h3>
+  <p>The opening lays out three waypoints for the session: <strong>Compound</strong> (better with every use, not just more volume), <strong>Govern</strong> (agents plus policy, with governance as a deal-closer), and <strong>Audit</strong> (shadow AI — what's live in your org without approval). The framing question for the whole module: <em>what happens when product-level trust meets organizational reality?</em></p>
+
+  <h3><span class="slide-num">Slide 2</span>Class Expectations</h3>
+  <p>Same ground rules as every other session — cameras on, Slack for questions, save deep individual asks for after class. M5 is denser than most modules. Two halves: a <em>compounding</em> block built on a lecture-then-build rhythm, and a <em>governance</em> block that ends with peer audit and a shadow AI exercise. Some of the exercises feel uncomfortably real — the shadow AI audit in particular tends to surface things nobody expected. That's the point.</p>
+
+  <h3><span class="slide-num">Slide 3</span>Course Arc</h3>
+  <p>Quick orientation. After today, only the capstone remains.</p>
+  <ul>
+    <li><strong>M1 — The Bet:</strong> What should we build, and how do we know fast?</li>
+    <li><strong>M2 — The Moat:</strong> Why won't this get copied in six months?</li>
+    <li><strong>M3 — The Margin:</strong> Will the economics actually work?</li>
+    <li><strong>M4 — The Contract:</strong> Why will users trust the output?</li>
+    <li><strong>M5 — The Guardrails:</strong> What breaks at scale? <em>(You are here.)</em></li>
+    <li><strong>M6 — The Pitch:</strong> How do we get it funded, shipped, and adopted?</li>
+  </ul>
+  <p>The strategy is a repo, not a deck. One folder per module. Today: <code>05-the-guardrails/</code>. M5 is the last <em>building</em> module — M6 is assembly and stress-test.</p>
+
+  <h3><span class="slide-num">Slide 4</span>What You Brought Today</h3>
+  <p>Recall from Module 4: an eval dashboard spec (golden dataset, judge setup, drift alerts, UX hooks), a reliability contract (promises, measurements, escalation, feedback loops), and folders <code>01-the-bet/</code> through <code>04-the-contract/</code> all committed. M4 proved trust at the <em>product</em> level. M5 asks the harder version: <strong>what breaks at org scale?</strong></p>
+  <p>The opening warm-up: thumb-vote whether your company has a published AI use policy. In every cohort, the answer is "sort of." That shared <em>sort-of</em> is the entire premise of the session.</p>
+</section>
+
+<hr class="divider">
+
+<section class="chapter">
+  <div class="section-label">02 · Provocation and the compounding concept</div>
+  <h2>Governance is a sales asset. Most products only scale.</h2>
+
+  <h3><span class="slide-num">Slide 5</span>Provocation</h3>
+  <p>The framing for the whole session, with three statements that <em>sound</em> like industry common sense and turn out to be wrong:</p>
+  <ol>
+    <li><strong>"Governance slows us down."</strong> False. <em>Salesforce</em> built what they call the Einstein Trust Layer and they literally sell it as a product feature. Enterprise buyers ask for it by name. Governance isn't slowing them down — it's their GTM strategy. They turned a compliance cost into a revenue driver.</li>
+    <li><strong>"We can manage AI tools organically."</strong> False. <em>Spotify</em> woke up one day with around a thousand AI tools floating across the organization. Different teams, different vendors, no coordination. They consolidated down to fifteen. Organic management is chaos with a nicer name.</li>
+    <li><strong>"Agents are just automation with better UX."</strong> False. Agents <em>choose actions</em> and chain tools — fundamentally a different category. <em>Air Canada</em>'s chatbot invented a refund policy that didn't exist, a grieving customer relied on it, and a tribunal held the company liable for what the bot said. The bot speaks for the brand.</li>
+  </ol>
+  <p>The point isn't pessimism. It's that the same beliefs that keep classic SaaS humming actively misroute AI strategy. The rest of the module gives you the tools to push back against each one — first with compounding systems, then with governance, then with a shadow AI audit you can actually hand to someone Monday morning.</p>
+
+  <h3><span class="slide-num">Slide 6</span>Compounding Systems</h3>
+  <p>The conceptual foundation of the first half, and arguably the most strategically important concept in the module. The reframe: there is a difference between <em>scales</em> and <em>compounds</em>, and most AI products are doing the first and calling it the second.</p>
+
+  <div class="compare">
+    <div class="compare-card bad">
+      <div class="label">Scales</div>
+      <div class="big-num">More volume</div>
+      <div class="desc">↑ volume · flat quality · linear cost. Fine, normal — but a commodity with variable costs.</div>
+    </div>
+    <div class="compare-card good">
+      <div class="label">Compounds</div>
+      <div class="big-num">Each touch → smarter</div>
+      <div class="desc">Every interaction makes the next one better. Cost per win <em>falls</em>. A different economic animal.</div>
+    </div>
+  </div>
+
+  <p>Three mechanisms make compounding actually happen: <strong>recursive learning</strong> (outputs and corrections feed the model), <strong>cross-domain transfer</strong> (a win in product A lifts product B next door), and <strong>network intelligence</strong> (fleet-level patterns, privacy-gated). Two anchors:</p>
+  <ul>
+    <li><strong>Duolingo</strong> — every learner interaction sharpens lesson difficulty for the next learner. Your struggle with Spanish past tense makes the next person's lesson better. Recursive learning at the lesson level.</li>
+    <li><strong>ServiceTitan</strong> — 32 products on one vertical stack, each feeding context to the others. HVAC scheduling data makes the invoicing smarter, which makes dispatching smarter, which feeds back into scheduling. Cross-domain transfer at the stack level.</li>
+  </ul>
+  <p>Why care: <strong>most AI products scale without compounding</strong>, and that means they're commodities with variable costs. If your system doesn't get smarter with use, someone else's will — and they'll eat your lunch while you're still arguing about the next feature.</p>
+</section>
+
+<hr class="divider">
+
+<section class="chapter">
+  <div class="section-label">03 · Design Your Compounding System</div>
+  <h2>One forcing function: freeze three months.</h2>
+
+  <h3><span class="slide-num">Slide 7</span>Governance &amp; Compounding Lab</h3>
+  <p>Section break introducing the first build block. Three exercises across the next stretch of the session: <strong>design your compounding system</strong> (now), <strong>draft a governance policy</strong> (after the lecture stack), and <strong>audit shadow AI</strong> (after the peer challenge). Forty minutes total. Everything you draft goes straight into <code>05-the-guardrails/compounding-system.md</code>.</p>
+
+  <h3><span class="slide-num">Slide 8</span>Design Your Compounding System</h3>
+  <p>Ten minutes of solo work. The slide shows a Feedback Loops table that mirrors <code>compounding-system.md</code> exactly. Three pre-labeled rows — <strong>Recursive Learning, Cross-Domain Transfer, Network Intelligence</strong> — but feel free to rename, add, or drop rows. Your product might have two loops; it might have six.</p>
+  <p>For each loop, four short fields: the <strong>input</strong> (what data goes in), the <strong>output</strong> (what improves), <strong>compounds Y/N</strong> (is it a flywheel or just a feature?), and <strong>status</strong> — <code>active</code> if it's shipping, <code>broken</code> if it exists but doesn't learn, <code>missing</code> if the loop just isn't there. Be honest about status. Most rows for most products are <code>missing</code>, and that <em>is</em> the finding.</p>
+  <p>Two small footer fields go below the table. <strong>Broken loop (partner found)</strong> stays blank for now — your partner identifies that during the peer challenge a few slides from here. <strong>Context Connectivity</strong> — one line on where knowledge silos in your org. If your support team's corrections never reach the eng team's models, that's a context-connectivity break, and it's almost always the answer to "why doesn't our product actually learn from real usage?"</p>
+
+  <div class="pull-quote">
+    <p>Freeze your product for three months — about one frontier cycle. No updates, no improvements. Still winning? If yes, you're not compounding. You're just scaling.</p>
+  </div>
+
+  <p>That's the forcing function. Twelve months used to be the cliché version; in AI, three is more honest — three months is roughly one model cycle, and it cleanly separates products with real compounding loops from products that ride model upgrades pretending to be flywheels.</p>
+  <p>The <strong>Compounding System Designer</strong> tool linked on the slide pre-loads the three rows, gives you a live diagnostic per row, runs the freeze-test logic, and copies your output as Markdown straight into the repo. Good answers name specific data flows — something like <em>"support ticket corrections feed the fine-tuning pipeline weekly"</em> — not aspirations.</p>
+  <p>The bar for today: three loops on the page with honest status labels. One loop that's genuinely active beats three that are aspirational, every time.</p>
+</section>
+
+<hr class="divider">
+
+<section class="chapter">
+  <div class="section-label">04 · The governance half — ladder, agents, ROI, Samsung</div>
+  <h2>Compliance → trust architecture → governance as GTM.</h2>
+
+  <h3><span class="slide-num">Slide 9</span>Responsible AI Maturity</h3>
+  <p>A three-level ladder that reframes how most teams think about compliance.</p>
+  <ul>
+    <li><strong>Level 1 — Compliance.</strong> EU AI Act, GDPR, CCPA. The minimum bar. Necessary, table stakes, doesn't sell anything.</li>
+    <li><strong>Level 2 — Trust Architecture.</strong> What you built in M4 — evals, confidence UX, reliability contracts. You're ahead of most companies if you're here.</li>
+    <li><strong>Level 3 — Governance = GTM.</strong> Model cards, bias posture, your trust infrastructure as a selling point. <em>Salesforce</em>'s Einstein Trust Layer is the textbook case — governance is in the actual sales pitch, and "show me your AI governance framework" is becoming a standard procurement question.</li>
+  </ul>
+  <p>Most orgs plateau at Level 1 or 2 and completely miss the revenue opportunity. The counter-anchor: <em>Google Gemini</em>'s image generation incident — paused publicly for remediation in front of the entire market. A velocity-vs-safety decision made on stage, in real time. The kind of moment that makes Level 1 feel inadequate.</p>
+
+  <h3><span class="slide-num">Slide 10</span>Agent Governance</h3>
+  <p>Multi-agent systems are fundamentally different from chatbots. Authorization, memory, liability, tool-calling in series — a different animal. Four governance knobs that survive model churn:</p>
+
+  <table class="notice-table">
+    <thead>
+      <tr><th>Knob</th><th>What it controls</th><th>Concrete move</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Autonomy</td>
+        <td>Draft ≠ send. Read ≠ write.</td>
+        <td>Best practice: draft anything, send nothing without approval — until eval data proves &gt;99% on the action.</td>
+      </tr>
+      <tr>
+        <td>Tool Calls</td>
+        <td>Every call is a risk surface.</td>
+        <td>Whitelist the allowed tools. Rate-limit them (10 refunds/hour). Log every call with reasoning + result.</td>
+      </tr>
+      <tr>
+        <td>Memory</td>
+        <td>What persists, who reads it.</td>
+        <td>Three explicit classes: short-term (session-only), long-term (per-user), shared (across users — almost always a hard no for customer-facing).</td>
+      </tr>
+      <tr>
+        <td>Chain</td>
+        <td>When B fails on A's output, who owns the handoff?</td>
+        <td>Named ownership per handoff. A "stop the chain" trigger if any agent in the line fails its eval. Don't let chains run silently.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The real-world anchor is <em>Microsoft Copilot</em> with Graph and plugins. They log and whitelist like any production system, and they tier autonomy explicitly — read your calendar (auto), draft an email (auto), send the email (one-click human approval). The principle that survives the next model swap: <strong>design around principles, not model names.</strong> Specific models churn every six months. Your governance framework needs to outlast that churn.</p>
+
+  <h3><span class="slide-num">Slide 11</span>Agentic vs. Traditional ROI</h3>
+  <p>Your execs are going to compare agent investments to traditional Robotic Process Automation (RPA — UiPath, Automation Anywhere, the "bots that click on screens" category that runs in most large enterprises). Same budget line, same quarterly review, <em>completely</em> different economics. If you don't get ahead of that conversation, you lose it.</p>
+
+  <div class="compare">
+    <div class="compare-card bad">
+      <div class="label">Traditional RPA</div>
+      <div class="big-num">Fixed paths</div>
+      <div class="desc">Linear ROI. Snaps on edge cases. Predictable to budget, brittle in practice.</div>
+    </div>
+    <div class="compare-card good">
+      <div class="label">Agentic</div>
+      <div class="big-num">Variable, learning</div>
+      <div class="desc">Token costs swing. Quality is fuzzy. Eats exceptions — <em>if governed</em>. Different P&amp;L, different audit trail.</div>
+    </div>
+  </div>
+
+  <p>Three decision levers to use with finance: <strong>complexity</strong> (simple and predictable → scripts; messy and edge-case-heavy → agents earn their keep), <strong>error cost</strong> (low tolerance for mistakes means the human review tax kills agent ROI fast), and <strong>learning</strong> (agents only pay off if the feedback loops from Slide 6 actually ship — not "we plan to ship them," <em>actually ship them</em>). Same slide as RPA on a spectrum, very different business case at the bottom.</p>
+
+  <h3><span class="slide-num">Slide 12</span>Samsung Case</h3>
+  <p>The case study most students remember six months later. Samsung employees started using ChatGPT for code review, meeting notes, and process optimization. Totally understandable — the tools were amazing, people wanted to use them, nobody had told them not to. Within roughly a month, three data leaks: source code, meeting content, and fabrication data, all entering vendor training pipelines. No AI use policy. No audit trail. Nobody even knew it was happening until it was too late.</p>
+
+  <div class="acts">
+    <div class="act">
+      <div class="act-label">Act One</div>
+      <div class="act-title">The Bet</div>
+      <div class="act-desc">ChatGPT adopted for code, notes, meetings. Fast wins, no guardrails, broad enthusiasm.</div>
+    </div>
+    <div class="act">
+      <div class="act-label">Act Two</div>
+      <div class="act-title">The Crack</div>
+      <div class="act-desc">3 leaks in ~1 month — source · meetings · fab data → vendor pipeline. No policy, no audit trail, panic.</div>
+    </div>
+    <div class="act">
+      <div class="act-label">Act Three</div>
+      <div class="act-title">The Correction</div>
+      <div class="act-desc">Ban all external AI tools. Rebuild internally from scratch. Massive productivity hit.</div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>The lesson isn't "don't use AI tools." It's that the absence of governance isn't a compliance gap — it's a strategy failure. The ban cost Samsung more than the leaks did.</p>
+  </div>
+
+  <p>The reflex reaction most students have is "this couldn't happen at my company." In every cohort that bet has been wrong. It's already happening. You just don't have the audit trail to prove it yet — which is the entire purpose of the shadow AI audit you'll build later in the session.</p>
+
+  <h3><span class="slide-num">Slide 13</span>The Shadow AI Audit (framework)</h3>
+  <p>A four-step framework that turns the Samsung fear into a repeatable diagnostic. <strong>Discovery → Risk → Consolidate → Policy.</strong></p>
+  <ol>
+    <li><strong>Discovery</strong> — surveys, expense reports, browser extensions, API keys. You'd be amazed what shows up in expenses: a $20/month AI tool someone's been quietly using for six months is shadow AI; multiply it by the team.</li>
+    <li><strong>Risk</strong> — map the data path for each tool, check for Data Processing Agreements (DPAs), regulatory exposure, score Low / Medium / High / Critical.</li>
+    <li><strong>Consolidate</strong> — remember Spotify's 1,000 → 15. The goal is <em>governed</em> AI, not zero AI. You're not trying to ban everything Samsung-style; you're trying to bring it into the light.</li>
+    <li><strong>Policy</strong> — allow-list, data classes, review cadence, enforcement. Air Canada's lesson: customer-facing bots need explicit, hard bounds or you're liable for whatever they make up.</li>
+  </ol>
+  <p>This is a <em>diagnostic</em> lens, not an exhaustive survey. A 50-person startup and a 50,000-person enterprise will run it very differently — the categories and depth shift with org size, industry, and what's already in your stack. Start with what scares you most.</p>
+</section>
+
+<hr class="divider">
+
+<section class="chapter">
+  <div class="section-label">05 · Draft Your Governance Policy</div>
+  <h2>One page. CISO-readable. Worked example included.</h2>
+
+  <h3><span class="slide-num">Slide 14</span>Draft Your Governance Policy</h3>
+  <p>Ten minutes. The slide layout mirrors <code>compounding-system.md → Governance Policy</code> exactly — five fields plus an optional Agent Topology strip. The brief is: one page your CISO wouldn't redline on sight.</p>
+  <ul>
+    <li><strong>Scope</strong> — what this policy covers. Be specific. "All customer-facing AI features in our SMB product line" beats "AI in our company."</li>
+    <li><strong>Autonomy boundaries</strong> — what agents can do solo vs. what needs a human. From Slide 10: which tool calls are draft-only, which auto-execute.</li>
+    <li><strong>Escalation triggers</strong> — when humans must enter. Common triggers: confidence below threshold, novel customer-facing content, anything legal / financial / medical, anything irreversible.</li>
+    <li><strong>Audit cadence</strong> — real-time / daily / weekly / monthly / quarterly. Pick one and <em>name the owner</em>.</li>
+    <li><strong>Regulatory exposure</strong> — EU AI Act risk tier (minimal / limited / high), plus GDPR, HIPAA, or sector-specific regimes that apply.</li>
+  </ul>
+  <p>The worked example used through the rest of the course — the customer support copilot. The slide tiles are clickable; each one reveals the example for that field. Combined, it looks like this:</p>
+
+  <table class="notice-table">
+    <thead>
+      <tr><th>Field</th><th>SupportCopilot v1.2</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Scope</td>
+        <td>AI features in the SupportCopilot product line — automated reply drafting, routing, and resolution scoring. Excludes internal-only analytics dashboards (separate data-team policy).</td>
+      </tr>
+      <tr>
+        <td>Autonomy</td>
+        <td>Drafting replies — <strong>auto</strong>. Sending replies under $0 risk (FAQ, account info) — <strong>auto</strong>. Sending replies with promised remedies (refunds, credits, escalations) — <strong>human approval required</strong>, even if AI confidence &gt; 95%. Closing tickets without reply — <strong>never auto</strong>.</td>
+      </tr>
+      <tr>
+        <td>Escalation</td>
+        <td>(1) Confidence &lt; 70%. (2) Customer message flagged legal / medical / distressed. (3) Any reply mentioning refund, credit, or policy exception. (4) Customer requests human. (5) ≥ 3 turns in one conversation.</td>
+      </tr>
+      <tr>
+        <td>Audit cadence</td>
+        <td><strong>Weekly</strong> — automated eval vs. golden dataset (PM: Sam). <strong>Monthly</strong> — human review of 50 random conversations + all escalations (Legal: Priya). <strong>Quarterly</strong> — full policy review with security + legal (CTO sign-off).</td>
+      </tr>
+      <tr>
+        <td>Regulatory</td>
+        <td>EU AI Act — limited risk (customer service is non-prohibited). GDPR — applies; data minimization in prompts, no training on customer PII. SOC 2 controls in place for log retention.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>See how specific that is? You could hand it to legal, ops, or a buyer and they could actually evaluate it. Compare to <em>"we have an AI governance policy"</em> — which means nothing. The act of writing the policy isn't the document. It's the forced specificity. Writing it makes you decide what you actually allow.</p>
+  <p>Below the five fields is a small <strong>Agent Topology</strong> strip — only fill it in if your product ships agents. Two short notes per agent: what it can do, and what it can't.</p>
+  <p>Open the <strong>Governance Policy Drafter</strong> tool from the slide. Same five fields, a "load worked example" button that drops in the SupportCopilot policy as a starter, structured rows for autonomy decisions and audit cadence, progress tracking, and a "copy as Markdown" button that exports straight into your repo. Use it or write directly into the file — your call.</p>
+  <p>One honest framing for the room: think of this as <em>starter vocabulary</em> for conversations with legal, security, and compliance. You'll map it onto your org's existing policies and committees, not replace them. Nobody loves it when product shows up saying "we wrote you a new policy, you're welcome." Don't make enemies of the people you need.</p>
+</section>
+
+<hr class="divider">
+
+<section class="chapter">
+  <div class="section-label">06 · Reset, peer pressure-test, shadow AI</div>
+  <h2>The audit that turns a scare into a tool.</h2>
+
+  <h3><span class="slide-num">Slide 15</span>Break</h3>
+  <p>Five-minute break. You just did most of the module's intellectual lift in one stretch — compounding loops, the responsible AI ladder, four agent governance knobs, the Samsung three-act tragedy, the audit framework, and a one-page governance policy. Coming back to the peer pressure-test, the shadow AI audit build, and synthesis.</p>
+
+  <h3><span class="slide-num">Slide 16</span>Cameras On</h3>
+  <p>Welcome back. Cameras on for the peer challenge — six minutes per direction, then a shadow AI audit you'll be able to hand to IT or Finance on Monday.</p>
+
+  <h3><span class="slide-num">Slide 17</span>Peer Challenge: "What Feedback Loop Is Broken?"</h3>
+  <p>Twelve minutes total, six per direction. Each partner audits the other's <code>compounding-system.md</code> entry through two lenses:</p>
+  <ul>
+    <li><strong>Loops.</strong> Is there a broken handoff? Theoretical learning that never actually happens? Corrections getting trashed instead of feeding back into the model? An <code>active</code> row that doesn't survive a five-minute interrogation?</li>
+    <li><strong>Governance.</strong> Unapproved agent action? Missing data class? A Samsung-style paste path where sensitive data could leak? An Air Canada-style customer bot with no guardrails?</li>
+  </ul>
+  <p>The repo capture is two short fields: <code>Broken loop identified by partner</code> and <code>Fix plan</code>. One specific broken loop, one specific fix. The pattern to enforce on yourself and your partner: <strong>named flow → concrete failure → measurable consequence.</strong> "Could improve data classification" is a feeling. "Support bot sends full conversation transcripts to the vendor with no PII stripping" is a finding.</p>
+
+  <div class="pull-quote">
+    <p>If your partner only found nice things to say, you need a tougher partner.</p>
+  </div>
+
+  <p>The slide title is about loops, but the on-screen boxes show both Loops and Governance for a reason: your partner is auditing the whole guardrails entry. The formal repo capture is the loop-finding (it's the only "partner found" field the repo exposes), but if a partner surfaces a great governance gap, fold it back into your own <em>Autonomy</em> or <em>Escalation</em> fields on the spot. Don't let governance findings die just because there's no dedicated field.</p>
+
+  <h3><span class="slide-num">Slide 18</span>Shadow AI Audit (Lab Intro)</h3>
+  <p>Section break introducing the highest-immediate-ROI exercise in the entire course. The other modules build long-term strategy. This one might save your company from a front-page incident.</p>
+
+  <h3><span class="slide-num">Slide 19</span>Build — Shadow AI Audit</h3>
+  <p>Ten minutes. The slide shows the Shadow AI Audit table from <code>compounding-system.md</code> — three rows by four columns: <strong>Tool / Owner / Risk H-M-L / Decision (keep / govern / kill)</strong>. Three rows is the floor; aim for five if you have time. The <em>Owner</em> column is the one most teams skip — if a tool doesn't have a named human responsible, it's already shadow AI.</p>
+  <p>Below the table, three summary stats matter more than the rows themselves: <strong>Tools found · After triage · Hidden spend</strong>. Hidden spend is the number that lights up CFO eyes. In one recent cohort, a student realized their org was burning roughly $8k/month across personal AI subscriptions that never showed up on any expense line. That number is the budget for the governed alternative.</p>
+  <p>Be ruthless with the Risk tiers. "Medium" is the lazy answer — push to High or Low. The Decision column has three real options: <strong>keep</strong> (safe and useful), <strong>govern</strong> (useful but needs guardrails), or <strong>kill</strong> (the data path is unsafe and there's no fix). Pick one villain tool right now — the one that made your stomach drop during the Samsung story.</p>
+  <p>The <strong>Shadow AI Audit</strong> tool from the slide walks you through discovery, risk-scoring, and triage with exportable results. Export the results when you're done — this is the artifact you're handing to someone on Monday, and being able to send <em>"here's our shadow AI inventory, scored, with decisions"</em> in a single message is the whole point of the exercise.</p>
+</section>
+
+<hr class="divider">
+
+<section class="chapter">
+  <div class="section-label">07 · Wrap and what's next</div>
+  <h2>Five components committed. One module left.</h2>
+
+  <h3><span class="slide-num">Slide 20</span>Your Repo After Today</h3>
+  <p>Five out of six folders done. Your living strategy repo now has compounding loops, governance, and a shadow AI inventory all sitting alongside the previous four components.</p>
+
+  <div class="repo-tree"><span class="folder">01-the-bet/</span>
+  <span class="file">diagnostic.md</span>
+  <span class="file">prototype.md</span>
+
+<span class="folder">02-the-moat/</span>
+  <span class="file">data-flywheel.md</span>
+  <span class="file">kill-switch.md</span>
+
+<span class="folder">03-the-margin/</span>
+  <span class="file">cost-curve.md</span>
+
+<span class="folder">04-the-contract/</span>
+  <span class="file">golden-dataset.md</span>
+
+<span class="folder new">05-the-guardrails/</span>
+  <span class="file new">compounding-system.md</span>   <span class="comment"># loops · governance · shadow AI</span>
+
+<span class="folder">06-the-pitch/</span>          <span class="comment"># → M6 Capstone</span>
+  <span class="file">roadmap.md</span>            <span class="comment"># the finale</span></div>
+
+  <p>Three things to be able to point to inside <code>05-the-guardrails/compounding-system.md</code>: a <strong>compounding sketch</strong> with three loops that actually learn (or honestly say they don't), a <strong>governance one-pager</strong> with autonomy, data, regs, and named owners, and a <strong>shadow AI audit</strong> with inventory, risk scoring, and keep/kill calls. If one of them feels light, that's homework before Module 6.</p>
+
+  <h3><span class="slide-num">Slide 21</span>Bridge to Module 6</h3>
+  <p>M5 closes the building phase. Everything from M1 through M5 — vulnerability, moat, economics, trust, guardrails — comes together next time. Module 6 is the board simulation: room = board, metrics + roadmap + story under pressure from your peers playing board members. The most fun module in the course, and the one that surfaces what's actually defensible in your strategy.</p>
+  <p><strong>Bring:</strong> your repo with <code>01/</code> through <code>05/</code> committed, your sharpest thesis, and thick skin. The pitch is a performance — and pitches that survive board questions are built, not improvised.</p>
+
+  <h3><span class="slide-num">Slide 22</span>Key Takeaways</h3>
+
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="takeaway-num">Takeaway 1</div>
+      <div class="takeaway-head">Compounding beats scaling.</div>
+      <p>Most AI products scale without getting smarter. If your system doesn't compound — corrections feeding training, cross-domain transfer, network intelligence — it's a commodity with variable costs. The freeze-test (three months, no updates, still winning?) is the cheap forcing function that separates real compounding from "we're just riding model upgrades."</p>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">Takeaway 2</div>
+      <div class="takeaway-head">Governance done well is a GTM asset.</div>
+      <p>Most orgs plateau at Level 1 (compliance) and quietly miss the revenue opportunity. Enterprise buyers increasingly ask <em>"show me your governance"</em> in procurement — Salesforce sells the Einstein Trust Layer as part of the product, not as a footnote. The jump from "we comply" to "we can prove how this works" closes deals faster.</p>
+    </div>
+    <div class="takeaway">
+      <div class="takeaway-num">Takeaway 3</div>
+      <div class="takeaway-head">Shadow AI is a strategy failure, not a compliance gap.</div>
+      <p>Samsung's three-act tragedy — bet, crack, correction — cost more in the ban than in the leaks. The absence of governance isn't neutral; it actively degrades your AI strategy. The audit isn't about catching people. It's about finding where the official product, policy, or workflow isn't good enough yet, and bringing what's already happening into the light.</p>
+    </div>
+  </div>
+
+  <p>The single line to hold onto, if you only hold onto one: <strong>systems that compound get the upside; systems that govern keep it; systems that audit see what's actually there.</strong></p>
+
+  <h3><span class="slide-num">Slide 23</span>Optional · Go Deeper</h3>
+  <p>Two optional exercises between now and Module 6. Both go directly into the repo.</p>
+  <ul class="bring-list">
+    <li><strong>Expand your shadow AI audit to ten tools.</strong> Run a real survey with your team. Five responses will surface tools you didn't know existed. Commit to <code>05-the-guardrails/compounding-system.md</code>.</li>
+    <li><strong>Apply agent governance to one real workflow.</strong> Pick one agent or AI workflow in your org, define all four governance knobs (autonomy, tool calls, memory, chain ownership), and add the topology to your repo.</li>
+  </ul>
+  <p>Next session: <strong>Module 6 — The Pitch.</strong> Everything you've built becomes one story, told under pressure.</p>
+
+  <h3><span class="slide-num">Slide 24</span>Survey</h3>
+  <p>Brief survey before signing off. The feedback genuinely shapes the next session and the next cohort — it's not boilerplate.</p>
+
+  <h3><span class="slide-num">Slide 25</span>Q&amp;A</h3>
+  <p>Final questions before wrap. Slack stays open between sessions for anything that surfaces later — especially the things that don't crystallise until you sit down with your governance one-pager and try to defend it for real.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-tag">Module 5 · The Guardrails</div>
+  <div class="footer-msg">Guardrails locked in. See you in Module 6.</div>
+  <div class="footer-sub">AI Product Strategy · Post-session companion notes</div>
+</footer>
+
+<script>
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+</script>
+
+</body>
+</html>
