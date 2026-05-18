@@ -1,0 +1,289 @@
+# Module 2 - The Moat
+
+*Shareable companion notes. These walk you back through what each slide covered, in case you want to review the arguments, examples, and frameworks at your own pace.*
+
+---
+
+## What this module is about
+
+Module 1 asked what you are betting on. Module 2 asks whether that bet can survive contact with the market. Most AI products look differentiated until a platform, model provider, or adjacent tool ships the same capability natively. This session turns that anxiety into useful strategy work.
+
+The core reframe: **data in a database is not a moat. Loops are.** A product becomes defensible when usage creates proprietary signal, that signal improves the product, and the improved product drives more usage. By the end of the module, you have scored your data flywheel, mapped the attackers most likely to exploit your weak point, stress-tested your moat with a partner, and built a Kill Switch plan for vendor portability.
+
+---
+
+### Slide 1 - The Moat
+
+The central question: **Why won't this get copied in 6 months?** Module 2 has three jobs:
+
+- **Map** where your product's defensibility actually lives.
+- **Stress-test** who attacks you, from where, and how fast.
+- **Protect** against model or vendor dependency with a Kill Switch.
+
+The repo artifact for this module is **Component 2: The Moat**, captured in `02-the-moat/`.
+
+### Slide 3 - Course Arc
+
+The full course is still one connected strategy:
+
+- **M1 - The Bet:** What should we build, and how do we know fast?
+- **M2 - The Moat:** Why won't this get copied in 6 months?
+- **M3 - The Margin:** Will the economics actually work?
+- **M4 - The Contract:** Why will users trust it?
+- **M5 - The Guardrails:** What breaks when this scales?
+- **M6 - The Pitch:** How do we get it funded, shipped, and adopted?
+
+Each module adds one folder to the living strategy repo. Today adds `02-the-moat/`.
+
+### Slide 4 - What You Brought Today
+
+Module 2 builds directly on your Module 1 work:
+
+- Your **Three-Axis Scorecard**: Contextual Moat, Data Advantage, Platform Exposure.
+- Your **Component 1: The Bet**: what you are building, for whom, and why now.
+- Your **Prototype**: the working proof that the bet is real.
+
+The weak score from Module 1 is not a failure. It is the crack Module 2 is designed to inspect.
+
+### Slide 5 - Moat Stress Test
+
+The opening exercise asks you to pull out your Module 1 scorecard and find your weakest axis. Then you name one specific company that could exploit it.
+
+Good answers are concrete:
+
+- "Microsoft could bundle this into Teams."
+- "Salesforce could add this to Einstein inside the CRM."
+- "OpenAI could turn this into a native workflow in ChatGPT."
+
+Weak answers stay vague:
+
+- "Big Tech."
+- "A startup."
+- "Someone with more data."
+
+Strategy gets sharper when the attacker has a name.
+
+### Slide 6 - 8 Moats
+
+The slide introduces eight classic moat types:
+
+| Moat | What Makes It Hard To Copy | Example |
+|---|---|---|
+| **Data** | Proprietary data that compounds with usage | Bloomberg |
+| **Workflow** | Deep process embedding and switching cost | Salesforce |
+| **Regulatory** | Compliance, certifications, and approvals | Palantir |
+| **Distribution** | Owned channels and default access | Apple |
+| **Ecosystem** | Third-party integrations and interdependence | Shopify |
+| **Network** | Each new user makes the product more valuable | LinkedIn |
+| **Physical** | Hardware, infrastructure, or real-world assets | Tesla |
+| **Scale** | Cost advantage from volume | AWS |
+
+For AI products, the two moats that matter most often are **Data** and **Workflow**. The goal is not to claim all eight. The goal is to identify the one or two that are actually real.
+
+### Slide 7 - The $1.5B Wrapper
+
+Jasper is the cautionary tale. In 2022, Jasper had 70,000 customers and a $1.5B valuation. Then ChatGPT made AI writing cheap, native, and everywhere. Google and Microsoft followed by embedding generative writing into existing productivity suites.
+
+The lesson is not "Jasper was bad." The lesson is that a thin wrapper around someone else's model is fragile. Features get eaten. Workflows survive.
+
+The key question for your product:
+
+**Are you a wrapper, or are you becoming a workflow?**
+
+### Slide 8 - How Deep Is Your Workflow?
+
+Workflow depth sits on a spectrum:
+
+- **Chatbot:** Users can switch in a day.
+- **Embedded feature:** The AI sits inside a tool users already use.
+- **Workflow layer:** The product coordinates multiple steps in a job.
+- **Operating system:** Switching means rebuilding the way the business works.
+
+Examples on the spectrum include Zendesk AI, Notion AI, GitHub Copilot, and NetSuite. The deeper the workflow, the harder it is for a competitor to copy the value by copying the feature.
+
+The uncomfortable test: **Could your users switch in a weekend?**
+
+### Slide 9 - Loops, Not Data
+
+This is the main reframe of the module:
+
+> The moat is not your data. The moat is whether your product gets smarter every time someone uses it.
+
+Most companies say they have proprietary data. Fewer can explain the mechanism that turns usage into better outputs. If corrections, preferences, and domain context disappear after each interaction, the product is not compounding.
+
+The question to keep asking:
+
+**When users correct your AI, does that signal disappear, or compound?**
+
+### Slide 10 - The Data Flywheel
+
+The flywheel works like this:
+
+1. Users interact.
+2. The product captures signal.
+3. The model or retrieval system improves.
+4. Outputs get better.
+5. Better outputs drive more usage.
+6. More usage creates more signal.
+
+Three signal types matter most:
+
+- **Corrections:** User fixes an output. That is proprietary training or evaluation data.
+- **Preferences:** Edits reveal individual or team taste, standards, and judgment.
+- **Domain context:** The product learns details generic models do not know.
+
+If your product throws these signals away, it is burning the moat it could be building.
+
+### Slide 11 - Data Flywheel Scoring
+
+The scoring framework uses four loops, each scored 1-5:
+
+| Loop | What It Measures | Score 1 | Score 5 |
+|---|---|---|---|
+| **Correction** | Do users fix AI outputs, and is that signal reused? | No capture | Automated retraining |
+| **Preference** | Does the product learn individual or team preferences? | Stateless | Deep personalization |
+| **Domain Context** | Does usage in one area improve quality elsewhere? | Siloed | Cross-domain transfer |
+| **Network** | Does each new user or team make the product better for everyone? | Isolated | Strong network effects |
+
+Your weakest loop is your vulnerability. That is where competitors attack first.
+
+### Slide 13 - Map Your Data Flywheel
+
+The lab turns the framework into your first Module 2 artifact. In `02-the-moat/data-flywheel.md`, you score all four loops and write what data you actually capture today.
+
+The important word is **today**. "We plan to capture this later" is usually a 1, not a 3.
+
+What to fill in:
+
+- Correction loop score and evidence.
+- Preference loop score and evidence.
+- Domain context loop score and evidence.
+- Network loop score and evidence.
+- Total score out of 20.
+- Weakest loop.
+- First fix for the weakest loop.
+
+### Slide 14 - Encroachment Threats
+
+After scoring your flywheel, you map three attack vectors:
+
+1. **Platform Encroachment:** A platform like OpenAI, Google, Apple, Microsoft, Salesforce, or Adobe ships your core feature natively.
+2. **Vertical Competitor:** A startup goes deeper than you in one narrow niche.
+3. **Adjacent Expansion:** A nearby tool adds your feature as "one more thing" and uses distribution to win.
+
+For each vector, capture:
+
+- Attacker.
+- Vector.
+- Time-to-threat.
+- Percent of value at risk.
+
+This goes in the **Encroachment Threat Assessment** section of `02-the-moat/data-flywheel.md`.
+
+### Slide 17 - The 90-Day Encroachment Plan
+
+This partner exercise forces specificity. One person is the defender. The other becomes the attacker.
+
+The attacker says:
+
+> "I am Head of Product at [company]. Here is my 90-day plan to steal your users."
+
+The best attacks target the defender's weakest flywheel loop. A strong 90-day plan names:
+
+- **Weeks 1-4:** What gets shipped.
+- **Weeks 5-8:** How users get poached.
+- **Weeks 9-12:** Why users do not come back.
+
+The point is not to be polite. The point is to surface the blind spots self-assessment misses.
+
+### Slide 18 - The Kill Switch
+
+The Kill Switch is the strategy for escaping vendor lock-in. The question:
+
+**Could you swap AI providers in under 48 hours?**
+
+There are three layers:
+
+1. **Abstraction Layer:** Product code does not call one provider directly everywhere.
+2. **Multi-Model Routing:** Tasks can route by cost, latency, and quality.
+3. **Eval Harness:** Automated tests prove the replacement provider meets your quality bar.
+
+If you cannot swap providers, you do not just have a technology choice. You have a dependency.
+
+### Slide 20 - The Kill Switch: Your Product
+
+The second Module 2 artifact is `02-the-moat/kill-switch.md`. The audit asks:
+
+1. **What's your setup?**
+   Provider, abstraction layer, multi-model routing, eval harness.
+
+2. **Stress test the dependency.**
+   What happens if the provider doubles pricing? What happens if the provider restricts your use case? What breaks first?
+
+3. **Name three actions.**
+   This week, this month, this quarter.
+
+Good actions are specific enough to hand to an engineer:
+
+- Weak: "Build abstraction layer."
+- Strong: "Move all embedding calls behind `ai_gateway.search()` by Friday."
+
+### Slide 21 - What You Did Today
+
+By the end of the module, you have completed three major moves:
+
+- **Mapped your data flywheel:** four loops scored, weakest loop identified.
+- **Survived the 90-Day Encroachment Plan:** a partner attacked your moat with a concrete plan.
+- **Built the Kill Switch:** a vendor portability audit with actions toward 48-hour swap readiness.
+
+The output belongs in your repo:
+
+- `02-the-moat/data-flywheel.md`
+- `02-the-moat/kill-switch.md`
+
+### Slide 22 - Bridge to Module 3
+
+Module 2 answers: **What is defensible?**
+
+Module 3 asks: **Will the economics actually work?**
+
+Even defensible AI products can fail if inference costs crush the margin. Bring forward:
+
+- Your committed `01-the-bet/` folder.
+- Your committed `02-the-moat/` folder.
+- Your flywheel scores.
+- Your top encroachment threat.
+- Your Kill Switch audit.
+
+### Slide 23 - Your Repo After Today
+
+Your living strategy repo now has:
+
+```text
+01-the-bet/
+  diagnostic.md
+  prototype.md
+
+02-the-moat/
+  data-flywheel.md
+  kill-switch.md
+```
+
+The repo is starting to tell a strategy story: what you are building, why now, what is vulnerable, what compounds, who attacks, and how you avoid vendor lock-in.
+
+### Slide 24 - Key Takeaways
+
+Three takeaways:
+
+1. **Data in a database is not a moat. Loops are.** A stockpile does not compound. A product that gets smarter with use does.
+2. **Self-assessment is always generous.** A partner's 90-day attack plan exposes vulnerabilities you are likely to soften when grading your own product.
+3. **Vendor portability is strategy, not ops.** The next great model can arrive any week. Teams with abstraction, routing, and evals can move. Teams without them are trapped.
+
+### Slide 25 - Optional: Go Deeper
+
+Two optional exercises before Module 3:
+
+- **Score a competitor's flywheel.** Pick a competitor and score their Correction, Preference, Domain Context, and Network loops. Compare their weakest loop to yours.
+- **Flesh out your moat files.** Add technical detail to your Kill Switch actions. Update your README with the one-sentence moat summary.
+
+Next session: **Module 3 - The Margin.** You know what might be defensible. Now you test whether it can make money.
