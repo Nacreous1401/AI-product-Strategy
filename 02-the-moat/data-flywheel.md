@@ -32,15 +32,18 @@ Surface fleet benchmarking in the copilot so new customers visibly benefit exist
 
 ## Competitive Positioning
 
-**Axis X:**
-**Axis Y:**
+**Axis X:**  
+Generic cloud IoT platform → Telecom-native connectivity intelligence
+
+**Axis Y:**  
+Reactive dashboarding → Proactive AI-assisted resolution
 
 | Competitor | X Position | Y Position | Notes |
 |-----------|-----------|-----------|-------|
-| Your product | | | |
-| | | | |
-| | | | |
-| | | | |
+| Your product | Telecom-native connectivity intelligence | Proactive AI-assisted resolution | Uses SIM/eSIM, roaming, carrier, and incident data to recommend actions |
+| AWS IoT | Generic cloud IoT platform | Reactive / partially proactive | Strong cloud distribution, but weaker telecom-specific visibility |
+| Cisco IoT Control Center | Telecom / carrier connectivity management | Mostly reactive dashboarding | Strong CMP competitor, but less differentiated AI copilot layer |
+| 1NCE | Connectivity-first IoT platform | Mostly reactive management | Strong simple connectivity offer, but less advanced operational intelligence |
 
 ---
 
