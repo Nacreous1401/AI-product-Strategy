@@ -6,52 +6,52 @@
 
 | Initiative | Strategy Component | Why it ships now | Confidence |
 |---|---|---|---|
-| AICP-1 — AI incident summary for connectivity issues | Bet | It directly supports the core copilot bet by helping users understand incidents faster. | H |
-| AICP-3 — Confidence score for AI recommendations | Contract | Trust requires users to see confidence and uncertainty before relying on AI recommendations. | H |
-| AICP-4 — Human review queue for low-confidence cases | Contract | Low-confidence outputs need human review before they become operationally risky. | H |
-| AICP-5 — Human approval before carrier or routing changes | Guardrails | This directly enforces the autonomy boundary for customer-impacting actions. | H |
-| AICP-12 — Provider abstraction layer | Moat | It supports vendor portability and reduces dependency on a single model provider. | M |
-| AICP-13 — Cascading model routing | Margin | It directly supports the stated cascading strategy to control AI COGS. | H |
-| AICP-14 — AI usage and cost monitoring | Margin | Margin cannot be managed without visibility into usage and cost by model, account, and workflow. | H |
-| AICP-15 — Hallucination audit workflow | Contract | It supports the reliability promise by reviewing unsupported or fabricated AI outputs. | H |
-| AICP-16 — Conflicting telemetry handling | Contract | It supports trust by lowering confidence when signals conflict. | H |
-| AICP-17 — Missing telemetry fallback behavior | Contract | It prevents automation or overconfidence when key evidence is missing. | H |
-| AICP-18 — Prompt injection protection | Guardrails | It protects system rules, telemetry, and policy logic from unsafe user instructions. | H |
+| AICP-1 — AI incident summary for connectivity issues | Bet | This is the basic copilot experience and can validate whether users understand incidents faster. | H |
+| AICP-3 — Confidence score for AI recommendations | Contract | Trust is impossible without visible confidence and uncertainty drivers. | H |
+| AICP-4 — Human review queue for low-confidence cases | Contract | Low-confidence outputs already need a safe human path before operational use. | H |
+| AICP-5 — Human approval before carrier or routing changes | Guardrails | This directly enforces the stated autonomy boundary. | H |
+| AICP-6 — Customer policy guardrail | Guardrails | The AI must not recommend actions that violate customer-specific rules. | H |
+| AICP-7 — Golden dataset evaluation dashboard | Contract | A basic eval dashboard is needed before reliability claims can be trusted. | M |
+| AICP-12 — Provider abstraction layer | Moat | This supports vendor portability and reduces platform dependency risk. | H |
+| AICP-13 — Cascading model routing | Margin | This directly supports the stated 85% low-cost / 15% frontier model strategy. | H |
+| AICP-14 — AI usage and cost monitoring | Margin | Cost visibility is required before pricing or margin assumptions are credible. | H |
+| AICP-15 — Hallucination audit workflow | Contract | Weekly hallucination review is already part of the stated audit cadence. | H |
+| AICP-16 — Conflicting telemetry handling | Contract | Conflicting signals are a known reliability failure mode and must lower confidence. | H |
+| AICP-17 — Missing telemetry fallback behavior | Contract | The copilot must show missing evidence instead of pretending certainty. | H |
+| AICP-18 — Prompt injection protection | Guardrails | Security controls are required before users can rely on AI recommendations. | H |
+| AICP-20 — Shadow AI tool governance | Guardrails | This directly supports the stated shadow AI audit and governance posture. | M |
 
 ### Horizon 2 — Validate (1–3 months)
 
 | Initiative | Strategy Component | Hypothesis | Kill Criteria | Confidence |
 |---|---|---|---|---|
-| AICP-2 — Connectivity incident root-cause recommendation | Bet | Evidence-backed root-cause recommendations reduce investigation time versus existing dashboards. | If we don't see reduced investigation time in user testing by week 6, we stop. | M |
-| AICP-6 — Customer policy guardrail | Guardrails | Customer-specific roaming and policy rules can be used to block or escalate risky recommendations. | If we cannot reliably detect policy conflicts in test cases by week 6, we stop. | M |
-| AICP-7 — Golden dataset evaluation dashboard | Contract | A dashboard can make accuracy, hallucination rate, drift, and latency measurable against golden cases. | If the dashboard does not expose meaningful reliability trends by week 6, we stop. | M |
-| AICP-8 — Operator correction feedback loop | Guardrails | Operator corrections and rejected recommendations can improve the golden dataset review process. | If corrections do not produce reusable review inputs by week 6, we stop. | M |
-| AICP-11 — Model provider fallback | Guardrails | Fallback capability can reduce single-provider pricing, availability, and portability risk. | If fallback creates unacceptable quality or latency degradation by week 6, we stop. | M |
-| AICP-20 — Shadow AI tool governance | Guardrails | An approved AI tool catalog can reduce unsafe shadow AI usage around live connectivity decisions. | If the audit does not reveal material shadow AI risk by week 6, we stop. | M |
+| AICP-2 — Connectivity incident root-cause recommendation | Bet | If the copilot shows likely root causes with evidence and confidence, operators will reduce investigation time compared with dashboards. | If we don't see at least 30% faster investigation time by week 6, we stop. | M |
+| AICP-8 — Operator correction feedback loop | Guardrails | If operator corrections feed into review and evals, the system will improve over time instead of repeating the same mistakes. | If we don't see repeated corrections turning into reusable golden dataset cases by week 6, we stop. | M |
+| AICP-11 — Model provider fallback | Moat | If provider abstraction works, fallback will reduce pricing, availability, and lock-in risk without degrading product quality. | If we can't switch providers for one core workflow without product logic changes by week 6, we stop. | M |
 
 ### Horizon 3 — Explore (3–6 months)
 
 | Initiative | Strategy Component | What must be true first | Confidence |
 |---|---|---|---|
-| AICP-9 — Fleet benchmarking for connectivity incidents | Moat | There must be enough anonymized cross-fleet incident data to create useful benchmarks. | L |
-| AICP-10 — Shared incident intelligence | Moat | Similar incident patterns must appear across fleets, roaming partners, or regions often enough to be useful. | L |
-| AICP-19 — Customer-facing escalation draft | Bet | The core diagnostic copilot must prove value before customer communication drafts matter. | L |
+| AICP-9 — Fleet benchmarking for connectivity incidents | Moat | The product must have enough anonymized cross-customer incident data to create meaningful benchmarks. | M |
+| AICP-10 — Shared incident intelligence | Moat | The system must reliably detect patterns across fleets without exposing customer-sensitive data. | M |
+| AICP-19 — Customer-facing escalation draft | Bet | The diagnostic copilot must first prove that its internal recommendations are trusted by operators. | L |
 
 ### Unmapped (cut or rethink)
 
 | Initiative | Why it's unmapped | Recommendation |
 |---|---|---|
-| None | All listed initiatives connect to Bet, Moat, Margin, Contract, or Guardrails. | No cut required from the unmapped category. |
+| None | All initiatives connect to Bet, Moat, Margin, Contract, or Guardrails. | Keep mapped, but deprioritize weak-fit items if capacity is limited. |
 
 ### Mapping Disagreements
 
 No disagreements — all user mappings stand.
 
-The most over-indexed horizon is H1; H2 needs stronger validation evidence and H3 needs clearer moat experiments.
+The roadmap is over-indexed on H1 execution; what is missing is stronger H2 validation around business impact and stronger H3 moat exploration.
 
-The single H3 bet to protect if budget gets cut is AICP-9 — Fleet benchmarking for connectivity incidents.
+The single H3 bet to protect is **AICP-9 — Fleet benchmarking for connectivity incidents**.
 
-The one initiative to kill today is AICP-19 — Customer-facing escalation draft.  
+The one initiative to kill today is **AICP-19 — Customer-facing escalation draft**. 
 
 ## Board Pitch
 
