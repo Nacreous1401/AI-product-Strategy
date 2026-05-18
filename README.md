@@ -99,11 +99,11 @@
 
 **How you get this funded, shipped, and adopted.**
 
-- **Horizon 1 (Now):**
-- **Horizon 2 (Next):**
-- **Horizon 3 (Bet):**
-- **Board Narrative:** **The case:**
-- **Ask:** ## M1 Baseline vs. Now
+- **Horizon 1 (Now):** AICP-1 — AI incident summary for connectivity issues · AICP-3 — Confidence score for AI recommendations · AICP-4 — Human review queue for low-confidence cases · AICP-5 — Human approval before carrier or routing changes · AICP-12 — Provider abstraction layer · AICP-13 — Cascading model routing · AICP-14 — AI usage and cost monitoring · AICP-15 — Hallucination audit workflow · AICP-16 — Conflicting telemetry handling · AICP-17 — Missing telemetry fallback behavior · AICP-18 — Prompt injection protection
+- **Horizon 2 (Next):** AICP-2 — Connectivity incident root-cause recommendation · AICP-6 — Customer policy guardrail · AICP-7 — Golden dataset evaluation dashboard · AICP-8 — Operator correction feedback loop · AICP-11 — Model provider fallback · AICP-20 — Shadow AI tool governance
+- **Horizon 3 (Bet):** AICP-9 — Fleet benchmarking for connectivity incidents · AICP-10 — Shared incident intelligence · AICP-19 — Customer-facing escalation draft
+- **Board Narrative:** We should fund an AI copilot that helps connectivity operations teams diagnose incidents faster, because our differentiation must move from managing SIMs and connectivity to turning our operational data into trusted network intelligence.
+- **Ask:** We are asking for 1.5 million in funding, 5 engineers, 1 PM, and 12 months to prove the copilot can reduce investigation time, create a premium AI tier, and establish the first version of our shared incident intelligence moat.…
 - **Key Strategic Change:**
 
 → Details: [`06-the-pitch/`](06-the-pitch/)
